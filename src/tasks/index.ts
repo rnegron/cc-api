@@ -1,11 +1,10 @@
 import axios from 'axios';
 import nowShowing from './now-showing';
-
-const CC_HOME_PAGE = 'https://caribbeancinemas.com';
+import { CC_URL, API_GIT_URL } from '../constants';
 
 const instance = axios.create({
-  baseURL: CC_HOME_PAGE,
-  headers: { 'X-CC-API': 'https://github.com/rnegron/cc-api' },
+  baseURL: CC_URL,
+  headers: { 'X-CC-API': API_GIT_URL },
 });
 
 (async () => {

@@ -9,6 +9,7 @@
     "watch": "tsc -w -p ./src",
     "serve": "ts-node src/",
     "lint": "tsc --noEmit && eslint '**/*.ts' --fix",
+    "scrape-theatres": "ts-node ./src/scripts/scrape-theatres",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

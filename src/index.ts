@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { config } from 'dotenv';
 import getServer from './server';
+import dbConnect from './database';
 
 config({ path: resolve(__dirname, '../.env') });
 
@@ -16,6 +17,7 @@ process.on('unhandledRejection', (err: any) => {
 
 async function start() {
   try {
+    await dbConnect();
     const server = await getServer();
     await server.start();
     console.log('Server running at:', server.info.uri);
