@@ -15,15 +15,17 @@ process.on('unhandledRejection', (err: any) => {
   process.exit(1);
 });
 
-async function start() {
+let server;
+
+(async () => {
   try {
     await dbConnect();
     const server = await getServer();
     await server.start();
-    console.log('Server running at:', server.info.uri);
+    server.log(['boot'], `Server running at: ${server.info.uri}`);
   } catch (err) {
     console.log(err);
   }
-}
+})();
 
-start();
+export default server;

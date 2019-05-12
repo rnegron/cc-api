@@ -375,6 +375,11 @@
     "@types/hapi__shot" "*"
     "@types/node" "*"
 
+"@types/hapi__hoek@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@types/hapi__hoek/-/hapi__hoek-6.2.0.tgz#61ec4dfb93e6aaccf2b407d6074a0633069e5d2d"
+  integrity sha512-MMS8ZD0SR2lklVkpNJw7iUYBmlvBLw1T04VSBhbWpiOi0ee6RoJUCcocVao1FLnSYR8Tt03dykRBv+FkvPIJSg==
+
 "@types/hapi__inert@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@types/hapi__inert/-/hapi__inert-5.2.0.tgz#c6bd1a2f18c480eb19e824a483589c26450578fd"

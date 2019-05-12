@@ -1,6 +1,6 @@
-import nowShowingRoute from './now-showing';
-import theatreRoute from './theatre';
+import nowShowingRoutes from './now-showing';
+import theatreRoutes from './theatre';
 
-const routes = [nowShowingRoute, theatreRoute];
+const routes = [...nowShowingRoutes, ...theatreRoutes];
 
 export default routes;

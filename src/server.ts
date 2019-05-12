@@ -5,7 +5,7 @@ import routes from './routes';
 export default async () => {
   const server: Hapi.Server = new Hapi.Server({
     host: 'localhost',
-    port: 3000,
+    port: process.env.PORT || 3000,
   });
 
   await server.register(plugins);
