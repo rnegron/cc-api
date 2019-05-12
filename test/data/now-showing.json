@@ -1,0 +1,100 @@
+[
+  {
+    "title": "Avengers 4",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "rating": "PG-13",
+    "runtime": 183,
+    "synopsis": "Adrift in space with no food or water, Tony Stark sends a message to Pepper Potts as his oxygen supply starts to dwindle. Meanwhile, the remaining Avengers -- Thor, Black Widow, Captain America and Bruce Banner -- must figure out a way to bring back their vanquished allies for an epic showdown with Thanos -- the evil demigod who decimated the planet and the universe.",
+    "release-date": "April 25, 2019",
+    "now-showing": true,
+    "starring": [
+      "Brie Larson",
+      "Bradley Cooper",
+      "Scarlett Johansson"
+    ],
+    "theatres": [
+      {
+        "name": "Caribbean Cinemas Plaza Las Americas",
+        "city": "San Juan",
+        "slug": "plaza-las-americas",
+        "runs": [
+          {
+            "type": "CXC-3D",
+            "language": "English",
+            "subtitles": "Spanish",
+            "3d": true,
+            "show-times": {
+              "Mon-Thu": [
+                "12:15PM",
+                "8:20 PM"
+              ],
+              "Friday": [
+                "12:15PM",
+                "8:20 PM"
+              ],
+              "Saturday": [
+                "12:15PM",
+                "8:20 PM"
+              ],
+              "Sunday": [
+                "12:15PM",
+                "8:20 PM"
+              ]
+            }
+          },
+          {
+            "type": "Normal",
+            "language": "Spanish",
+            "subtitles": null,
+            "3d": false,
+            "Mon-Thu": [
+              "8:30AM",
+              "10:15AM",
+              "1:30PM",
+              "4:45PM",
+              "8:20 PM"
+            ],
+            "Friday": [
+              "8:30AM",
+              "10:15AM",
+              "1:30PM",
+              "4:45PM",
+              "8:20 PM"
+            ],
+            "Saturday": [
+              "4:45PM",
+              "8:20 PM"
+            ],
+            "Sunday": [
+              "4:45PM",
+              "8:20 PM"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Pokémon Detective Pikachu",
+    "genre": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "rating": "PG",
+    "runtime": 105,
+    "synopsis": "A young man joins forces with Detective Pikachu to unravel the mystery behind his father's disappearance. Chasing clues through the streets of Ryme City, the dynamic duo soon discover a devious plot that poses a threat to the Pokémon universe.",
+    "release-date": "May 9, 2019",
+    "now-showing": true,
+    "starring": [
+      "Ryan Reynolds",
+      "Suki Waterhouse",
+      "Kathryn Newton"
+    ],
+    "theatres": []
+  }
+]

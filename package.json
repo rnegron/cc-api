@@ -1,0 +1,56 @@
+{
+  "name": "cc-api",
+  "version": "0.0.1",
+  "description": "An open-source API for https://caribbeancinemas.com",
+  "scripts": {
+    "start": "node dist/",
+    "postInstall": "tsc -p ./src",
+    "tasks": "node dist/tasks",
+    "watch": "tsc -w -p ./src",
+    "serve": "ts-node src/",
+    "lint": "tsc --noEmit && eslint '**/*.ts' --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rnegron/cc-api"
+  },
+  "author": "Raúl Negrón (https://raulnegron.me)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/cheerio": "^0.22.11",
+    "@types/dotenv": "^6.1.1",
+    "@types/hapi__hapi": "^18.2.1",
+    "@types/hapi__inert": "^5.2.0",
+    "@types/hapi__joi": "^15.0.1",
+    "@types/hapi__vision": "^5.5.0",
+    "@types/mongoose": "^5.5.0",
+    "@types/node": "^12.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.8.0",
+    "@typescript-eslint/parser": "^1.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.17.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@hapi/good": "^8.2.0",
+    "@hapi/good-console": "^8.1.0",
+    "@hapi/good-squeeze": "^5.2.0",
+    "@hapi/hapi": "^18.3.1",
+    "@hapi/inert": "^5.2.0",
+    "@hapi/joi": "^15.0.2",
+    "@hapi/vision": "^5.5.2",
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.0.0",
+    "hapi-swagger": "^9.4.2",
+    "mongoose": "^5.5.7"
+  },
+  "engines": {
+    "node": ">=10.15"
+  }
+}
