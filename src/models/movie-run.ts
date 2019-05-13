@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export const MovieRunsSchema = new mongoose.Schema({
+  __v: { type: Number, select: false },
   type: { type: String, default: 'Normal' },
   language: { type: String, default: 'Spanish' },
   subtitles: { type: String, default: null },

@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
-import { MovieRunsSchema } from './movie-runs';
+import * as Hoek from '@hapi/hoek';
+import { MovieRunsSchema } from './movie-run';
 
 import { ITheatreDocument } from '../interfaces';
 
@@ -9,6 +10,7 @@ export interface ITheatreModel extends mongoose.Model<ITheatre> {
 }
 
 const TheatreSchema = new mongoose.Schema({
+  __v: { type: Number, select: false },
   name: { type: String },
   slug: { type: String, unique: true },
   city: { type: String },
@@ -52,7 +54,7 @@ TheatreSchema.statics.amenityMap = function(amenityTitle: string) {
     case '':
       return 'accessible';
     default:
-      return `UNRECOGNIZED: ${amenityTitle}`;
+      throw new Error(`Unrecognized amenity: ${Hoek.escapeHtml(amenityTitle)}`);
   }
 };
 

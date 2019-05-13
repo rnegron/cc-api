@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import { ActorSchema } from './actor';
 
 export const MovieSchema = new mongoose.Schema({
+  __v: { type: Number, select: false },
   title: { type: String, index: true },
   genre: { type: [String] },
   rating: { type: String },
