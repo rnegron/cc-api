@@ -3,10 +3,14 @@ import plugins from './plugins';
 import routes from './routes';
 
 export default async () => {
-  const server: Hapi.Server = new Hapi.Server({
-    host: 'localhost',
-    port: process.env.PORT || 3000,
-  });
+  const serverConfig: { port: string; host?: string } = {
+    port: process.env.PORT || '3000',
+  };
+
+  if (process.env.NODE_ENV !== 'production') {
+    serverConfig.host = 'localhost';
+  }
+  const server: Hapi.Server = new Hapi.Server(serverConfig);
 
   await server.register(plugins);
   await server.route(routes);
