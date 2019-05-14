@@ -15,6 +15,10 @@ const swaggerPlugin = {
         name: 'theatres',
         description: 'API theatres interface.',
       },
+      {
+        name: 'theaters',
+        description: 'API theatres interface.',
+      },
     ],
     swaggerUI: true,
     documentationPage: true,

@@ -4,10 +4,10 @@
 
 ## Todo
 
-- [x] Logging
+- [X] Logging
 - [ ] Throttling/Security
 - [ ] Versioning
-- [ ] JSON Schema
+- [ ] JSONAPI Schema
 - [X] Documentation
 - [ ] MongoDB Document Hydration
-- [ ] Deployment
+- [ ] Travis Deployment

@@ -88,7 +88,10 @@ async function getTheatreData(instance: AxiosInstance, slug: string) {
 
   const instance = axios.create({
     baseURL: CC_URL,
-    headers: { 'X-CC-API': API_GIT_URL },
+    headers: {
+      'X-CC-API': API_GIT_URL,
+      'User-Agent': `CC-API (${API_GIT_URL})`,
+    },
   });
 
   let theatreSlugs = await getTheatres(instance);

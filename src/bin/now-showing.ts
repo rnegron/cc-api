@@ -1,3 +1,5 @@
+// # usr/bin/env node
+
 import { AxiosPromise, AxiosInstance } from 'axios';
 import * as cheerio from 'cheerio';
 
