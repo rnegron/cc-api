@@ -46,6 +46,8 @@
     "@types/hapi__inert": "^5.2.0",
     "@types/hapi__joi": "^15.0.1",
     "@types/hapi__vision": "^5.5.0",
+    "@types/lodash.zip": "^4.2.6",
+    "@types/luxon": "^1.13.0",
     "@types/meow": "^5.0.0",
     "@types/mongoose": "^5.5.0",
     "@types/node": "^12.0.0",
@@ -56,6 +58,8 @@
     "hapi-api-version": "^2.2.0",
     "hapi-rate-limitor": "^2.7.1",
     "hapi-swagger": "^9.4.2",
+    "lodash": "^4.17.11",
+    "luxon": "^1.13.3",
     "meow": "^5.0.0",
     "mongoose": "^5.5.7",
     "typescript": "^3.4.5"
