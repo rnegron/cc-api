@@ -1,11 +1,12 @@
 import { Document } from 'mongoose';
 
 export interface IMovieDocument extends Document {
+  movieId: string;
   title: string;
   genre: string[];
-  rating?: string;
-  runtime?: number;
-  synopsis?: string;
+  rating: string;
+  runtime: number;
+  synopsis: string;
   'release-date': Date;
   'now-showing': boolean;
   staring: IActorDocument[];
@@ -43,4 +44,9 @@ export interface IMovieRunDocument extends Document {
     Saturday?: string[];
     Sunday?: string[];
   };
+}
+
+export interface IMovieTaskData {
+  movieId: string;
+  movieHtml: string;
 }

@@ -8,6 +8,7 @@ export interface IMovieModel extends mongoose.Model<IMovie> {}
 
 export const MovieSchema = new mongoose.Schema({
   __v: { type: Number, select: false },
+  movieId: { type: String, unique: true },
   title: { type: String, index: true },
   genre: { type: [String] },
   rating: { type: String },
