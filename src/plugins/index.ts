@@ -1,5 +1,6 @@
 import logger from './logger';
 import swagger from './swagger';
+import version from './version';
 import rateLimiter from './rate-limiter';
 
 export default [
@@ -8,4 +9,5 @@ export default [
   require('@hapi/vision'),
   swagger,
   logger,
+  version,
 ];
