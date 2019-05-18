@@ -2,7 +2,10 @@
 
 import axios from 'axios';
 import * as meow from 'meow';
-import nowShowingOrComingSoonTask, { Options } from './now-soon-scrape';
+
+import saveToDB from './helpers/save-to-db';
+import nowShowingOrComingSoonTask, { Options } from './scrape-features-movies';
+import { getTitle } from '../../src/helpers/get-movie-data';
 
 import { CC_URL, API_GIT_URL } from '../constants';
 
@@ -12,11 +15,12 @@ const cli = meow(
     $ ts-node src/tasks
     
   Options
-    --now-showing, --now  Scrape the now showing movies
-    --coming-soon, --soon Scrape the coming soon movies
+    --now-showing, --now    Scrape movies now showing
+    --coming-soon, --soon   Scrape movies coming soon
+    --save,                 Store results in MongoDB
 
   Examples
-    $ ts-node src/tasks --now-showing
+    $ ts-node src/tasks --now --save
 `,
   {
     flags: {
@@ -27,6 +31,9 @@ const cli = meow(
       comingSoon: {
         type: 'boolean',
         alias: 'soon',
+      },
+      save: {
+        type: 'boolean',
       },
     },
   }
@@ -51,5 +58,16 @@ const instance = axios.create({
 
   const results = await nowShowingOrComingSoonTask(instance, choice);
 
-  console.log(results);
+  if (cli.flags.save) {
+    try {
+      await saveToDB(results, cli.flags);
+      console.log('Data saved!');
+      process.exit(0);
+    } catch (err) {
+      console.log(`Error: ${err}`);
+      process.exit(1);
+    }
+  } else {
+    console.log(results.map((movie) => getTitle(movie.movieHtml)));
+  }
 })();

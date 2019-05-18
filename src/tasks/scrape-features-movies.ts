@@ -1,7 +1,10 @@
 #!npx ts-node
 
+import { zip } from 'lodash';
 import { AxiosPromise, AxiosInstance } from 'axios';
 import * as cheerio from 'cheerio';
+
+import { IMovieTaskData } from '../interfaces';
 
 export enum Options {
   nowShowingUrl = '/now-showing/',
@@ -11,7 +14,7 @@ export enum Options {
 export default async (
   instance: AxiosInstance,
   choice: Options
-): Promise<string[]> => {
+): Promise<IMovieTaskData[]> => {
   const page = await instance.get(choice);
 
   const $ = cheerio.load(page.data);
@@ -21,17 +24,22 @@ export default async (
 
   const pagePromises: AxiosPromise[] = [];
 
+  const movieIdArr: string[] = [];
+
   movieArr.map((movie) => {
+    movieIdArr.push(movie.split('movie/')[1].replace('/', ''));
     pagePromises.push(instance.get(movie));
   });
 
   const pageResults = await Promise.all(pagePromises);
 
-  const results = pageResults.map((page) => {
+  const pageHtmlArr = pageResults.map((page) => {
     const $ = cheerio.load(page.data);
-    return $('.titles')
-      .text()
-      .replace(/\\/, '');
+    return $.html();
+  });
+
+  const results: IMovieTaskData[] = zip(movieIdArr, pageHtmlArr).map((pair) => {
+    return { movieId: pair[0] || '', movieHtml: pair[1] || '' };
   });
 
   return results;
