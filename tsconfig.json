@@ -3,7 +3,7 @@
     "target": "es2018",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./src",
+    // "rootDir": "./src",
 
     "strict": true,
     "allowJs": false,
@@ -19,6 +19,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/**.ts", "test/**/**.ts"],
+  "include": ["src/**/**.ts", "tests/**/**.ts"],
   "exclude": ["node_modules"]
 }

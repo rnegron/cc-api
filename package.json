@@ -4,13 +4,12 @@
   "description": "An open-source API for https://caribbeancinemas.com",
   "scripts": {
     "start": "node dist/index.js",
-    "postinstall": "tsc -p .",
-    "tasks": "node dist/tasks",
-    "watch": "tsc -w -p ./src",
     "serve": "ts-node src/",
+    "postinstall": "tsc -p .",
+    "test": "jest -b -i",
     "lint": "tsc --noEmit && eslint '**/*.ts' --fix",
-    "scrape-theatres": "ts-node ./src/scripts/scrape-theatres",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tasks": "ts-node src/tasks",
+    "scrape-theatres": "ts-node ./src/scripts/scrape-theatres"
   },
   "repository": {
     "type": "git",
@@ -47,6 +46,7 @@
     "@types/hapi__inert": "^5.2.0",
     "@types/hapi__joi": "^15.0.1",
     "@types/hapi__vision": "^5.5.0",
+    "@types/meow": "^5.0.0",
     "@types/mongoose": "^5.5.0",
     "@types/node": "^12.0.0",
     "axios": "^0.18.0",
@@ -56,6 +56,7 @@
     "hapi-api-version": "^2.2.0",
     "hapi-rate-limitor": "^2.7.1",
     "hapi-swagger": "^9.4.2",
+    "meow": "^5.0.0",
     "mongoose": "^5.5.7",
     "typescript": "^3.4.5"
   },

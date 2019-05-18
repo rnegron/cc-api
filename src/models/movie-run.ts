@@ -1,5 +1,10 @@
 import * as mongoose from 'mongoose';
 
+import { IMovieRunDocument } from '../interfaces';
+
+export interface IMovieRun extends IMovieRunDocument {}
+export interface IMovieRunModel extends mongoose.Model<IMovieRun> {}
+
 export const MovieRunsSchema = new mongoose.Schema({
   __v: { type: Number, select: false },
   type: { type: String, default: 'Normal' },
@@ -14,6 +19,9 @@ export const MovieRunsSchema = new mongoose.Schema({
   },
 });
 
-const MovieRunsModel = mongoose.model('movierun', MovieRunsSchema);
+const MovieRunsModel = mongoose.model<IMovieRun, IMovieRunModel>(
+  'movierun',
+  MovieRunsSchema
+);
 
 export default MovieRunsModel;

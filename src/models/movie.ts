@@ -1,5 +1,10 @@
 import * as mongoose from 'mongoose';
 import { ActorSchema } from './actor';
+import { IMovieDocument } from '../interfaces';
+
+export interface IMovie extends IMovieDocument {}
+
+export interface IMovieModel extends mongoose.Model<IMovie> {}
 
 export const MovieSchema = new mongoose.Schema({
   __v: { type: Number, select: false },
@@ -13,5 +18,9 @@ export const MovieSchema = new mongoose.Schema({
   staring: { type: [ActorSchema] },
 });
 
-const MovieModel = mongoose.model('Movie', MovieSchema);
+const MovieModel: IMovieModel = mongoose.model<IMovie, IMovieModel>(
+  'Movie',
+  MovieSchema
+);
+
 export default MovieModel;
