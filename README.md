@@ -2,6 +2,7 @@
 
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 [![Build Status](https://travis-ci.org/rnegron/cc-api.svg?branch=master)](https://travis-ci.org/rnegron/cc-api)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=caribbeancinemas-api)]
 
 A bare-bones homebrew implementation of the Caribbean Cinemas API, being built in TypeScript using web scrapers. An official API exists, this is just a fun exercise. For personal use only.
 

@@ -1,11 +1,18 @@
 language: node_js
+
 node_js:
 - '10.15'
+
 cache:
   yarn: true
+
+services:
+  - redis-server
+
 script:
 # - yarn lint
-- yarn test
+  - yarn test
+
 deploy:
   provider: heroku
   api_key:

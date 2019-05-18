@@ -7,7 +7,7 @@
     "serve": "ts-node src/",
     "postinstall": "tsc -p .",
     "test": "jest -b -i",
-    "lint": "tsc --noEmit && eslint '**/*.ts' --fix",
+    "lint": "tsc --noEmit && eslint '**/*.ts'",
     "tasks": "ts-node src/tasks",
     "scrape-theatres": "ts-node ./src/scripts/scrape-theatres",
     "cleanup": "rm -rf dist"
