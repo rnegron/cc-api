@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-const fakeNowShowing = require('../../test/data/now-showing.json');
+const fakeNowShowing = require('../../tests/data/now-showing.json');
 
 const nowShowingDefaults = {
   method: 'GET',

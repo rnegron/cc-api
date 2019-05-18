@@ -9,7 +9,8 @@
     "test": "jest -b -i",
     "lint": "tsc --noEmit && eslint '**/*.ts' --fix",
     "tasks": "ts-node src/tasks",
-    "scrape-theatres": "ts-node ./src/scripts/scrape-theatres"
+    "scrape-theatres": "ts-node ./src/scripts/scrape-theatres",
+    "cleanup": "rm -rf dist"
   },
   "repository": {
     "type": "git",
