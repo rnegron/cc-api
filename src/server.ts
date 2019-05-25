@@ -5,6 +5,7 @@ import routes from './routes';
 export default async () => {
   const serverConfig: { port: string; host?: string } = {
     port: process.env.PORT || '3000',
+    host: '0.0.0.0',
   };
 
   if (process.env.NODE_ENV !== 'production') {
