@@ -50,3 +50,7 @@ export interface IMovieTaskData {
   movieId: string;
   movieHtml: string;
 }
+
+export interface ISerialize {
+  (data: Document | Document[]): any;
+}
