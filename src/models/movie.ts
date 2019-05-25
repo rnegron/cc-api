@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import jsonapi from '@carsondarling/mongoose-jsonapi';
+import jsonapi = require('@carsondarling/mongoose-jsonapi');
 
 import { ActorSchema } from './actor';
 

@@ -1,10 +1,10 @@
 import * as mongoose from 'mongoose';
 import * as Hoek from '@hapi/hoek';
-import jsonapi, { ISerialize } from '@carsondarling/mongoose-jsonapi';
+import jsonapi = require('@carsondarling/mongoose-jsonapi');
 
 import { MovieRunsSchema } from './movie-run';
 
-import { ITheatreDocument } from '../interfaces';
+import { ITheatreDocument, ISerialize } from '../interfaces';
 
 export interface ITheatre extends ITheatreDocument {}
 export interface ITheatreModel extends mongoose.Model<ITheatre> {
