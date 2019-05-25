@@ -3,11 +3,13 @@ import jsonapi = require('@carsondarling/mongoose-jsonapi');
 
 import { ActorSchema } from './actor';
 
-import { IMovieDocument } from '../interfaces';
+import { IMovieDocument, ISerialize } from '../interfaces';
 
 export interface IMovie extends IMovieDocument {}
 
-export interface IMovieModel extends mongoose.Model<IMovie> {}
+export interface IMovieModel extends mongoose.Model<IMovie> {
+  serialize: ISerialize;
+}
 
 export const MovieSchema = new mongoose.Schema({
   __v: { type: Number, select: false },

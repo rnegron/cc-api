@@ -7,8 +7,8 @@ const theatreDefaults = {
   path: '/theatres/{theatreSlug?}',
   handler: theatreController,
   options: {
-    description: 'Get theatre list',
-    notes: 'Returns an array of theatres',
+    description: 'Get theatres',
+    notes: 'Returns an array or an instance of theatre details',
     tags: ['api', 'theatre'],
     validate: {
       params: {

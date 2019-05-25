@@ -13,7 +13,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] Logging
     - [X] Throttling
     - [X] Versioning
-    - [ ] JSONAPI Schema Serialization
+    - [X] JSONAPI Schema Serialization
     - [ ] Documentation
     - [ ] Testing / Coverage
     - [ ] Caching
@@ -22,6 +22,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [ ] Idempotent tasks
     - [ ] TravisCI Deployment
 - Routes
-    - [ ] Movies
+    - [X] Movies
+    - [X] Theatres
     - [ ] Movie Runs
     
