@@ -20,12 +20,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^24.0.13",
+    "@types/mongodb-memory-server": "^1.8.0",
     "@typescript-eslint/eslint-plugin": "^1.8.0",
     "@typescript-eslint/parser": "^1.8.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",
+    "mongodb-memory-server": "^5.1.2",
     "prettier": "^1.17.0",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.1.0"

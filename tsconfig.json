@@ -4,7 +4,7 @@
     "module": "commonjs",
     "outDir": "./dist",
     "typeRoots": ["./node_modules/@types", "./src/@types"],
-    // "rootDir": "./src",
+    "rootDir": "./src",
 
     "strict": true,
     "allowJs": false,
@@ -20,6 +20,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/**.ts", "tests/**/**.ts"],
+  "include": ["src/**/**.ts"],
   "exclude": ["node_modules"]
 }
