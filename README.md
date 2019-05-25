@@ -2,6 +2,8 @@
 
 [![TypeScript](https://img.shields.io/badge/typescript-%E2%9D%A4%EF%B8%8F-blue.svg)](https://www.typescriptlang.org/)
 [![Build Status](https://travis-ci.org/rnegron/cc-api.svg?branch=master)](https://travis-ci.org/rnegron/cc-api)
+[![Maintainability](https://api.codeclimate.com/v1/badges/42eab3fd8ea68603786f/maintainability)](https://codeclimate.com/github/rnegron/cc-api/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/42eab3fd8ea68603786f/test_coverage)](https://codeclimate.com/github/rnegron/cc-api/test_coverage)
 
 A bare-bones homebrew implementation of the Caribbean Cinemas API, being built in TypeScript using web scrapers. An official API exists, this is just a fun exercise. For personal use only.
 
@@ -20,7 +22,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [ ] MongoDB Document Hydration / Task Scheduling
     - [ ] MongoDB Document Cleanup / Document Expiration
     - [ ] Idempotent tasks
-    - [ ] TravisCI Deployment
+    - [X] TravisCI Deployment
 - Routes
     - [X] Movies
     - [X] Theatres
