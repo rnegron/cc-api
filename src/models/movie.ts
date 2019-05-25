@@ -1,5 +1,8 @@
 import * as mongoose from 'mongoose';
+import jsonapi from '@carsondarling/mongoose-jsonapi';
+
 import { ActorSchema } from './actor';
+
 import { IMovieDocument } from '../interfaces';
 
 export interface IMovie extends IMovieDocument {}
@@ -18,6 +21,8 @@ export const MovieSchema = new mongoose.Schema({
   'now-showing': { type: Boolean },
   staring: { type: [ActorSchema] },
 });
+
+MovieSchema.plugin(jsonapi, { name: 'movie' });
 
 const MovieModel: IMovieModel = mongoose.model<IMovie, IMovieModel>(
   'Movie',

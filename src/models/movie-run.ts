@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import jsonapi from '@carsondarling/mongoose-jsonapi';
 
 import { IMovieRunDocument } from '../interfaces';
 
@@ -18,6 +19,8 @@ export const MovieRunsSchema = new mongoose.Schema({
     Sunday: [String],
   },
 });
+
+MovieRunsSchema.plugin(jsonapi, { name: 'movie-runs' });
 
 const MovieRunsModel = mongoose.model<IMovieRun, IMovieRunModel>(
   'movierun',

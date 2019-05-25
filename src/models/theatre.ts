@@ -1,5 +1,7 @@
 import * as mongoose from 'mongoose';
 import * as Hoek from '@hapi/hoek';
+import jsonapi, { ISerialize } from '@carsondarling/mongoose-jsonapi';
+
 import { MovieRunsSchema } from './movie-run';
 
 import { ITheatreDocument } from '../interfaces';
@@ -7,6 +9,7 @@ import { ITheatreDocument } from '../interfaces';
 export interface ITheatre extends ITheatreDocument {}
 export interface ITheatreModel extends mongoose.Model<ITheatre> {
   amenityMap(amenityTitle: string): string;
+  serialize: ISerialize;
 }
 
 const TheatreSchema = new mongoose.Schema({
@@ -57,6 +60,8 @@ TheatreSchema.statics.amenityMap = function(amenityTitle: string) {
       throw new Error(`Unrecognized amenity: ${Hoek.escapeHtml(amenityTitle)}`);
   }
 };
+
+TheatreSchema.plugin(jsonapi, { name: 'theatre' });
 
 const TheatreModel: ITheatreModel = mongoose.model<ITheatre, ITheatreModel>(
   'Theatre',
