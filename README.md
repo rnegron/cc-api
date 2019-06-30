@@ -8,6 +8,26 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
 
 **Note**: Since the data for this API is being obtained by scraping the web page, it is not expected to be accurate forever. In fact, new data will be unobtainable once the web page changes, at least until the scrapers get updated to compensate. In any case, this is a toy project and should be treated as such.
 
+
+## How To
+
+### Run the API
+
+`yarn serve`
+
+### Scrape theatres and update database
+
+`yarn scrape-theatres`
+
+
+### Scrape _Now Showing_ Movies and update database
+
+`ts-node src/tasks --now-showing `
+
+### Scrape _Coming Soon_ Movies and update database
+
+`ts-node src/tasks --coming-soon`
+
 ## To-Do
 
 - General
@@ -16,7 +36,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] Versioning
     - [X] JSONAPI Schema Serialization
     - [ ] Documentation
-    - [ ] Testing / Coverage
+    - [ ] Test Controllers / Use fixtures
     - [ ] Caching
     - [ ] MongoDB Document Hydration / Task Scheduling
     - [ ] MongoDB Document Cleanup / Document Expiration
