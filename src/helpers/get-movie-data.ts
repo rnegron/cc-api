@@ -59,6 +59,23 @@ export function getSynopsis(movieDetails: string[]) {
     .trim();
 }
 
+function getMovieDetails({
+  movieHtml,
+  movieDetailsArr,
+}: {
+  movieHtml: string;
+  movieDetailsArr: string[];
+}) {
+  return {
+    title: getTitle(movieHtml),
+    genre: getGenres(movieDetailsArr),
+    rating: getRating(movieDetailsArr),
+    runtime: getRuntime(movieDetailsArr),
+    synopsis: getSynopsis(movieDetailsArr),
+    releaseDate: getReleaseDate(movieDetailsArr),
+  };
+}
+
 export default async function({ movieId, movieHtml }: IMovieTaskData) {
   const $ = cheerio.load(movieHtml);
 
@@ -70,58 +87,22 @@ export default async function({ movieId, movieHtml }: IMovieTaskData) {
     .map((elem) => elem.trim())
     .filter((elem) => elem !== '');
 
-  let title = null;
-  let genre = null;
-  let rating = null;
-  let runtime = null;
-  let synopsis = null;
-  let releaseDate = null;
+  let movieResults = null;
 
   try {
-    title = getTitle(movieHtml);
-  } catch (err) {
-    console.log(`Failed to get title: ${err.message}`);
-  }
+    let movieDetails = getMovieDetails({
+      movieHtml,
+      movieDetailsArr,
+    });
 
-  try {
-    genre = getGenres(movieDetailsArr);
+    movieResults = {
+      id: movieId,
+      ...movieDetails,
+    };
   } catch (err) {
-    console.log(`Failed to get genre: ${err.message}`);
+    console.log(`Failed to get movie details: ${err.message}`);
+    process.exit(1);
   }
-
-  try {
-    rating = getRating(movieDetailsArr);
-  } catch (err) {
-    console.log(`Failed to get rating: ${err.message}`);
-  }
-
-  try {
-    runtime = getRuntime(movieDetailsArr);
-  } catch (err) {
-    console.log(`Failed to get runtime ${err.message}`);
-  }
-
-  try {
-    synopsis = getSynopsis(movieDetailsArr);
-  } catch (err) {
-    console.log(`Failed to get synopsis: ${err.message}`);
-  }
-
-  try {
-    releaseDate = getReleaseDate(movieDetailsArr);
-  } catch (err) {
-    console.log(`Failed to get release date: ${err.message}`);
-  }
-
-  const movieResults = {
-    id: movieId,
-    title,
-    genre,
-    rating,
-    runtime,
-    synopsis,
-    releaseDate,
-  };
 
   return movieResults;
 }

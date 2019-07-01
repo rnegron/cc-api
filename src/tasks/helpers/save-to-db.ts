@@ -21,12 +21,7 @@ export default async function(
     console.log(`Data obtained, saving instance...`);
     const movie = new Movie({
       movieId: movieTaskData.movieId,
-      title: movieData.title,
-      genre: movieData.genre,
-      rating: movieData.rating,
-      runtime: movieData.runtime,
-      synopsis: movieData.synopsis,
-      'release-date': movieData.releaseDate,
+      ...movieData,
       'now-showing': flags.nowShowing && !flags.comingSoon,
     });
 
