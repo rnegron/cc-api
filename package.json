@@ -65,7 +65,7 @@
     "hapi-rate-limitor": "^2.7.1",
     "hapi-swagger": "^10.0.2",
     "lodash": "^4.17.11",
-    "luxon": "^1.13.3",
+    "luxon": "^1.16.1",
     "meow": "^5.0.0",
     "mongoose": "^5.5.7",
     "typescript": "^3.4.5"
