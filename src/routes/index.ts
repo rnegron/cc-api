@@ -1,5 +1,6 @@
 import comingSoonRoutes from './coming-soon';
 import nowShowingRoutes from './now-showing';
+import movieRunRoutes from './movie-runs';
 import theatreRoutes from './theatre';
 import movieRoutes from './movie';
 
@@ -8,6 +9,7 @@ const routes = [
   ...theatreRoutes,
   ...comingSoonRoutes,
   ...movieRoutes,
+  ...movieRunRoutes,
 ];
 
 export default routes;
