@@ -11,6 +11,7 @@ export default async () => {
   if (process.env.NODE_ENV !== 'production') {
     serverConfig.host = 'localhost';
   }
+
   const server: Hapi.Server = new Hapi.Server(serverConfig);
 
   await server.register(plugins);

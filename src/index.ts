@@ -1,9 +1,10 @@
 import { resolve } from 'path';
 import { config } from 'dotenv';
-import getServer from './server';
-import dbConnect from './database';
 
 config({ path: resolve(__dirname, '../.env') });
+
+import getServer from './server';
+import dbConnect from './database';
 
 process.on('uncaughtException', (err: Error) => {
   console.error(`uncaughtException ${err.message}`);

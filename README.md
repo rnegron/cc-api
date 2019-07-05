@@ -41,9 +41,10 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [ ] MongoDB Document Hydration / Task Scheduling
     - [ ] MongoDB Document Cleanup / Document Expiration
     - [ ] Idempotent tasks
+    - [ ] Pagination
     - [X] TravisCI Deployment
 - Routes
     - [X] Movies
     - [X] Theatres
-    - [ ] Movie Runs
+    - [X] Movie Runs
     
