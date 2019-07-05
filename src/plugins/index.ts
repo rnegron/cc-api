@@ -15,6 +15,7 @@ let plugins = [
   version,
 ];
 
+// Set up Sentry error monitoring in production
 if (process.env.NODE_ENV === 'production') {
   let sentryOptions = {
     baseUri: process.env.BASE_URI,
@@ -24,7 +25,6 @@ if (process.env.NODE_ENV === 'production') {
     },
   };
 
-  console.log('setting sentry');
   plugins = [{ ...error, options: sentryOptions }, ...plugins];
 }
 

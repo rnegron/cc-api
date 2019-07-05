@@ -3,9 +3,9 @@
 import axios from 'axios';
 import * as meow from 'meow';
 
-import saveToDB from './helpers/save-to-db';
+import saveToDB from './utils/save-to-db';
 import nowShowingOrComingSoonTask, { Options } from './scrape-features-movies';
-import { getTitle } from '../../src/helpers/get-movie-data';
+import { getTitle } from '../helpers/get-movie-data';
 
 import { CC_URL, API_GIT_URL } from '../constants';
 
