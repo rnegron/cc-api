@@ -25,10 +25,11 @@ const theatreDefaults = {
   },
 };
 
-const theatreRoute = Object.assign({}, theatreDefaults);
+const theatreRoute = { ...theatreDefaults };
 
-const alternativeTheatreRoute = Object.assign({}, theatreDefaults, {
+const alternativeTheatreRoute = {
+  ...theatreDefaults,
   path: '/theaters/{theatreSlug?}',
-});
+};
 
 export default [theatreRoute, alternativeTheatreRoute];

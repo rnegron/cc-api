@@ -6,7 +6,7 @@ const comingSoonRoute = {
   },
   options: {
     description: 'Displays the upcoming movies',
-    notes: 'Updated every Sunday at 5AM.',
+    notes: 'Updated every day at 1AM UTC.',
     tags: ['api', 'home', 'coming-soon'],
   },
 };

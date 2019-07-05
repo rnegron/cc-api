@@ -9,18 +9,13 @@ const nowShowingDefaults = {
   },
   options: {
     description: 'Displays the movies that are featured as "now showing".',
-    notes: 'Updated every Sunday at 5AM.',
+    notes: 'Updated every day at 1AM UTC.',
     tags: ['api', 'home', 'now-showing'],
-    plugins: {
-      'hapi-swagger': {
-        order: 1,
-      },
-    },
   },
 };
 
-const homePage = Object.assign({}, nowShowingDefaults, { path: '/' });
+const homePage = { ...nowShowingDefaults, path: '/' };
 
-const nowShowingRoute = Object.assign({}, nowShowingDefaults);
+const nowShowingRoute = { ...nowShowingDefaults };
 
 export default [homePage, nowShowingRoute];

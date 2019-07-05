@@ -53,12 +53,11 @@ async function getAmenities(html: string) {
     amenitiesArr.map((amenity) => Theatre.amenityMap($(amenity).prop('title')))
   );
 
-  return Object.assign(
-    {},
+  return {
     ...amenitiesMapping.map((amenity) => {
       return { [amenity]: true };
-    })
-  );
+    }),
+  };
 }
 
 async function getTheatreData(instance: AxiosInstance, slug: string) {
