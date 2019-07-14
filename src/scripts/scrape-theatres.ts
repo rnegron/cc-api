@@ -49,15 +49,19 @@ async function getAmenities(html: string) {
     .filter((_, elem) => $(elem).prop('title') !== undefined)
     .get();
 
-  const amenitiesMapping = await Promise.all(
+  const amenities = await Promise.all(
     amenitiesArr.map((amenity) => Theatre.amenityMap($(amenity).prop('title')))
   );
 
-  return {
-    ...amenitiesMapping.map((amenity) => {
-      return { [amenity]: true };
-    }),
-  };
+  let amenitiesMapping: { [key: string]: boolean } = amenities.reduce(
+    (accum: { [key: string]: boolean }, amenity: string) => {
+      accum[amenity] = true;
+      return accum;
+    },
+    {}
+  );
+
+  return amenitiesMapping;
 }
 
 async function getTheatreData(instance: AxiosInstance, slug: string) {
