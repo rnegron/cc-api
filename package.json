@@ -61,7 +61,7 @@
     "blankie": "^4.1.1",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
-    "hapi-api-version": "^2.2.0",
+    "hapi-api-version": "^2.3.0",
     "hapi-rate-limitor": "^2.7.1",
     "hapi-sentry": "^2.0.2",
     "hapi-swagger": "^10.0.2",
