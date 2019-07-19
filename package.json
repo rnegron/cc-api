@@ -65,7 +65,7 @@
     "hapi-rate-limitor": "^2.7.1",
     "hapi-sentry": "^2.0.2",
     "hapi-swagger": "^10.0.2",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.15",
     "luxon": "^1.17.1",
     "meow": "^5.0.0",
     "mongoose": "^5.6.4",
