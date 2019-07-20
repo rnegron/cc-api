@@ -87,22 +87,15 @@ export default async function({ movieId, movieHtml }: IMovieTaskData) {
     .map((elem) => elem.trim())
     .filter((elem) => elem !== '');
 
-  let movieResults = null;
+  let movieDetails = getMovieDetails({
+    movieHtml,
+    movieDetailsArr,
+  });
 
-  try {
-    let movieDetails = getMovieDetails({
-      movieHtml,
-      movieDetailsArr,
-    });
-
-    movieResults = {
-      id: movieId,
-      ...movieDetails,
-    };
-  } catch (err) {
-    console.log(`Failed to get movie details: ${err.message}`);
-    process.exit(1);
-  }
+  let movieResults = {
+    id: movieId,
+    ...movieDetails,
+  };
 
   return movieResults;
 }
