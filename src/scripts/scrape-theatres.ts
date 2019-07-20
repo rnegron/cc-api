@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import * as cheerio from 'cheerio';
+import * as signale from 'signale';
 
 import { CC_URL, API_GIT_URL } from '../constants';
 import dbConnect from '../database';
@@ -100,7 +101,15 @@ async function getTheatreData(instance: AxiosInstance, slug: string) {
   let theatreSlugs = await getTheatres(instance);
 
   for (let theatreSlug of theatreSlugs) {
-    console.log(`Getting data for ${theatreSlug}...`);
+    // https://github.com/klaussinani/signale/issues/44#issuecomment-499476792
+    console.log();
+
+    let theatreLog = new signale.Signale({
+      interactive: true,
+      scope: `Theatre Slug: ${theatreSlug}`,
+    });
+
+    theatreLog.await(`Getting data for ${theatreSlug}...`);
     const data = await getTheatreData(instance, theatreSlug);
 
     const existingTheatre = await Theatre.findOneAndUpdate(
@@ -109,15 +118,15 @@ async function getTheatreData(instance: AxiosInstance, slug: string) {
     ).exec();
 
     if (existingTheatre) {
-      console.log(
+      theatreLog.note(
         `Found existing Theatre ${existingTheatre.name} and updated it!`
       );
     } else {
-      console.log(`Creating Theatre ${data.name}...`);
+      theatreLog.await(`Creating Theatre ${data.name}...`);
       const theatre = new Theatre(data);
       await theatre.save();
 
-      console.log(`${theatre.name} saved!`);
+      theatreLog.success(`${theatre.name} saved!`);
     }
   }
 

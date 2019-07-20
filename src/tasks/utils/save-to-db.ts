@@ -1,4 +1,5 @@
 import * as meow from 'meow';
+import * as signale from 'signale';
 
 import dbConnect from '../../database';
 import Movie from '../../models/movie';
@@ -9,16 +10,44 @@ export default async function(
   movies: IMovieTaskData[],
   flags: meow.Result['flags']
 ) {
-  console.log('Connecting to DB...');
+  let dbLog = new signale.Signale({ interactive: true, scope: 'db' });
+
+  dbLog.await('Connecting to DB...');
   await dbConnect();
-  console.log('Connection successful.');
+  dbLog.success('DB connection successful.');
 
-  console.log(`Processing ${movies.length} movies...`);
+  signale.info(`Obtained ${movies.length} movies`);
+
   for (let movieTaskData of movies) {
-    console.log(`Obtaining data for movie with ID ${movieTaskData.movieId}...`);
-    const movieData = await getMovieData(movieTaskData);
+    // https://github.com/klaussinani/signale/issues/44#issuecomment-499476792
+    console.log();
 
-    console.log(`Data obtained, saving instance...`);
+    let movieLog = new signale.Signale({
+      interactive: true,
+      scope: `Movie ID: ${movieTaskData.movieId}`,
+    });
+
+    movieLog.pending(`Checking if movie exists...`);
+
+    let existingMovie = await Movie.findOne({
+      movieId: movieTaskData.movieId,
+    }).exec();
+
+    if (existingMovie) {
+      movieLog.note(`Movie already exists!`);
+      continue;
+    }
+
+    let movieData;
+    try {
+      movieLog.pending(`Obtaining data for movie...`);
+      movieData = await getMovieData(movieTaskData);
+    } catch (err) {
+      movieLog.fatal(`Failed to obtain movie data, error: ${err.message}`);
+      continue;
+    }
+
+    movieLog.await(`Data obtained, saving instance...`);
     const movie = new Movie({
       movieId: movieTaskData.movieId,
       ...movieData,
@@ -27,9 +56,9 @@ export default async function(
 
     try {
       const movieInstance = await movie.save();
-      console.log(`Saved instance (${movieInstance._id})`);
+      movieLog.success(`Saved instance (${movieInstance._id})`);
     } catch (err) {
-      console.log(`Failed to save instance (${movieTaskData.movieId})`);
+      movieLog.fatal(`Failed to save instance (${movieTaskData.movieId})`);
       throw new Error(err.message);
     }
   }
