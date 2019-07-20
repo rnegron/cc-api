@@ -15,13 +15,11 @@ beforeAll(async () => {
   mongoServer = new MongoMemoryServer();
 
   const mongoUri = await mongoServer.getConnectionString();
-  await mongoose.connect(
-    mongoUri,
-    { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false },
-    (err) => {
-      if (err) console.error(err);
-    }
-  );
+  await mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  });
 });
 
 beforeEach(async () => {
@@ -29,7 +27,7 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-  mongoose.disconnect();
+  await mongoose.disconnect();
   await mongoServer.stop();
 });
 
