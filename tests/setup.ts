@@ -25,7 +25,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
-  testServer.initialize();
+  await testServer.initialize();
 });
 
 afterAll(async () => {

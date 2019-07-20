@@ -9,6 +9,8 @@
     "test": "jest -b -i",
     "lint": "tsc --noEmit && eslint '**/*.ts'",
     "tasks": "ts-node src/tasks",
+    "add-movie-runs": "ts-node ./src/scripts/add-movie-runs",
+    "update-movie-runs": "ts-node ./src/scripts/update-movie-runs",
     "scrape-theatres": "ts-node ./src/scripts/scrape-theatres",
     "cleanup": "rm -rf dist"
   },
@@ -53,7 +55,7 @@
     "@types/hapi__vision": "^5.5.0",
     "@types/jsonapi-serializer": "^3.6.1",
     "@types/lodash.zip": "^4.2.6",
-    "@types/luxon": "^1.13.0",
+    "@types/luxon": "^1.15.2",
     "@types/meow": "^5.0.0",
     "@types/mongoose": "^5.5.8",
     "@types/node": "^12.6.8",

@@ -54,3 +54,10 @@ export interface IMovieTaskData {
 export interface ISerialize {
   (data: Document | Document[]): any;
 }
+
+export interface IMovieRunDate {
+  'MON-THURS'?: string[];
+  FRIDAY?: string[];
+  SATURDAY?: string[];
+  SUNDAY?: string[];
+}
