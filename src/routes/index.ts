@@ -1,6 +1,6 @@
 import comingSoonRoutes from './coming-soon';
 import nowShowingRoutes from './now-showing';
-import movieRunRoutes from './movie-runs';
+import movieRunRoutes from './movie-run';
 import theatreRoutes from './theatre';
 import movieRoutes from './movie';
 
