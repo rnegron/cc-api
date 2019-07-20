@@ -1,4 +1,4 @@
-// import * as Joi from '@hapi/joi';
+import * as Joi from '@hapi/joi';
 
 import movieRunController from '../controllers/movie-run';
 
@@ -12,6 +12,16 @@ const movieRunsDefaults = {
     tags: ['api', 'movie-runs', 'movies'],
     plugins: {
       'hapi-swagger': {},
+    },
+    validate: {
+      params: {
+        movieRunId: Joi.string()
+          .max(24)
+          .regex(/^[0-9a-fA-F]{24}$/)
+          .optional()
+          .example('54759eb3c090d83494e2d804')
+          .description('The movie-run identifier. A MongoDB ObjectID.'),
+      },
     },
   },
 };
