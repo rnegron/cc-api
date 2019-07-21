@@ -31,7 +31,8 @@ function getDates({
       }
 
       return DateTime.fromISO(
-        `${weekDayString}T${movieHour}:${movieMinute}:00`, {zone: 'America/Puerto_Rico'}
+        `${weekDayString}T${movieHour}:${movieMinute}:00`,
+        { zone: 'America/Puerto_Rico' }
       ).toUTC();
     });
   });
@@ -82,6 +83,8 @@ export default (dates: IMovieRunDate) => {
 
     if (days === 'MON-THURS') {
       weekDays = getMondayToThursdayDays();
+    } else if (days === 'MON-FRI') {
+      weekDays = getMondayToFridayDays();
     } else if (days === 'FRIDAY') {
       weekDays = getFridayDays();
     } else if (days === 'SATURDAY') {
