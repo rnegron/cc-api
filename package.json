@@ -54,7 +54,7 @@
     "@types/hapi__joi": "^15.0.1",
     "@types/hapi__vision": "^5.5.0",
     "@types/jsonapi-serializer": "^3.6.1",
-    "@types/lodash.zip": "^4.2.6",
+    "@types/lodash": "^4.14.136",
     "@types/luxon": "^1.15.2",
     "@types/meow": "^5.0.0",
     "@types/mongoose": "^5.5.8",

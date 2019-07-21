@@ -15,10 +15,11 @@ export const MovieRunsSchema = new mongoose.Schema({
   subtitles: { type: String, default: null },
   '3d': { type: Boolean, default: false },
   'show-times': {
-    'Mon-Thu': [String],
-    Friday: [String],
-    Saturday: [String],
-    Sunday: [String],
+    'Mon-Thu': [Date],
+    'Mon-Fri': [Date],
+    Friday: [Date],
+    Saturday: [Date],
+    Sunday: [Date],
   },
 });
 
