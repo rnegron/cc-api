@@ -31,7 +31,7 @@ function getDates({
       }
 
       return DateTime.fromISO(
-        `${weekDayString}T${movieHour}:${movieMinute}:00`
+        `${weekDayString}T${movieHour}:${movieMinute}:00`, {zone: 'America/Puerto_Rico'}
       ).toUTC();
     });
   });
@@ -54,6 +54,10 @@ export function getFridayDays(): DateTime[] {
   const fridayThisWeek = mondayThisWeek.plus({ days: 4 });
 
   return [fridayThisWeek];
+}
+
+export function getMondayToFridayDays(): DateTime[] {
+  return [...getMondayToThursdayDays(), ...getFridayDays()];
 }
 
 export function getSaturdayDays(): DateTime[] {
