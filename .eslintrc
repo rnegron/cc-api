@@ -1,5 +1,10 @@
 {
   "parser": "@typescript-eslint/parser",
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
