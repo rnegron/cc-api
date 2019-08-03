@@ -862,10 +862,10 @@
   resolved "https://registry.yarnpkg.com/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
   integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
 
-"@types/jest@^24.0.13":
-  version "24.0.15"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.15.tgz#6c42d5af7fe3b44ffff7cc65de7bf741e8fa427f"
-  integrity sha512-MU1HIvWUme74stAoc3mgAi+aMlgKOudgEvQDIm1v4RkrDudBh1T+NFp5sftpBAdXdx1J0PbdpJ+M2EsSOi1djA==
+"@types/jest@^24.0.16":
+  version "24.0.16"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.16.tgz#8d3e406ec0f0dc1688d6711af3062ff9bd428066"
+  integrity sha512-JrAiyV+PPGKZzw6uxbI761cHZ0G7QMOHXPhtSpcl08rZH6CswXaaejckn3goFKmF7M3nzEoJ0lwYCbqLMmjziQ==
   dependencies:
     "@types/jest-diff" "*"
 
@@ -941,10 +941,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
   integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
 
-"@types/node@^12.6.8":
-  version "12.6.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
-  integrity sha512-aX+gFgA5GHcDi89KG5keey2zf0WfZk/HAQotEamsK2kbey+8yGKcson0hbK8E+v0NArlCJQCqMP161YhV6ZXLg==
+"@types/node@^12.6.9":
+  version "12.6.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.9.tgz#ffeee23afdc19ab16e979338e7b536fdebbbaeaf"
+  integrity sha512-+YB9FtyxXGyD54p8rXwWaN1EWEyar5L58GlGWgtH2I9rGmLGBQcw63+0jw+ujqVavNuO47S1ByAjm9zdHMnskw==
 
 "@types/signale@^1.2.1":
   version "1.2.1"
@@ -2572,10 +2572,10 @@ handlebars@^4.0.11, handlebars@^4.1, handlebars@^4.1.2:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-hapi-api-version@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/hapi-api-version/-/hapi-api-version-2.3.0.tgz#fe26cc9b45b995b0441cb794ccabbaad30d5427b"
-  integrity sha512-FBVXhar4yDdL0RBGstxMQP8jY72gOj2anMzk3CHUBMMX5tDXxc2A7/iopvKMxfM/q2/4D7tBcfq0nyxhqjoZJw==
+hapi-api-version@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/hapi-api-version/-/hapi-api-version-2.3.1.tgz#7f266092d8d23e9143cc391cb94a67cd150d7933"
+  integrity sha512-3lVE0kpPxj3/Gh9aaMEHuaUDkUVcMJeCVijADehgftpIkmvY2UsU408HXoFpVNm0whUX0eCo/lk/221pf7fFDg==
   dependencies:
     "@hapi/boom" "^7.4.2"
     "@hapi/hoek" "^8.0.2"
@@ -3988,10 +3988,10 @@ mongodb-core@3.2.7:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb-memory-server-core@5.1.9:
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/mongodb-memory-server-core/-/mongodb-memory-server-core-5.1.9.tgz#4281905fdcee0611fdf703ce6a1d21f31ba1d113"
-  integrity sha512-9wd3VTeDln/6mn8RQ1OxP8MZVhS0fLx+Ru1jik6Y2swTCacq7eh0RETlho9JEOg9M+FYADeAQ63Qf+zohIjIYA==
+mongodb-memory-server-core@5.1.10:
+  version "5.1.10"
+  resolved "https://registry.yarnpkg.com/mongodb-memory-server-core/-/mongodb-memory-server-core-5.1.10.tgz#4a71aa8938489a771a7318fc4a610913c3fb4b15"
+  integrity sha512-iK67WLo3d4t55t8bpTmkxrTqhHS+gM6ElTXFqSUP+FpbhQf8jxdGy111umLrM5avgVKD4O2IxP+F7//lR2ZfCg==
   dependencies:
     camelcase "^5.3.1"
     cross-spawn "^6.0.5"
@@ -4011,12 +4011,12 @@ mongodb-memory-server-core@5.1.9:
   optionalDependencies:
     mongodb ">=3.2.7"
 
-mongodb-memory-server@^5.1.9:
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/mongodb-memory-server/-/mongodb-memory-server-5.1.9.tgz#2f12de92940f1cc9fd84761b792525a7ef1c5fef"
-  integrity sha512-3nMYYDgu/WyaYcEGVG9ick/B4FG6QMSQHgEDqfpV35Cfui4nG2NHYs4ZTUBWh5gltlNVWJ/0E8sBWbkKhUC36w==
+mongodb-memory-server@^5.1.10:
+  version "5.1.10"
+  resolved "https://registry.yarnpkg.com/mongodb-memory-server/-/mongodb-memory-server-5.1.10.tgz#94112fba8393681b6be924ed3f6070ae39a642d6"
+  integrity sha512-aFYRzhyhDqi0nWpa1zXXS2P9yiAtsBJY3KCMaM9Cczt5ENGSpOKcMjzz31UqoFu/cMmS5WvaC46EUuyG/AmWyQ==
   dependencies:
-    mongodb-memory-server-core "5.1.9"
+    mongodb-memory-server-core "5.1.10"
 
 mongodb@3.2.7, mongodb@>=3.2.7:
   version "3.2.7"
@@ -4031,10 +4031,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.6.6:
-  version "5.6.6"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.6.tgz#78953b9ea91b1bf685ce59d7737100352af627f6"
-  integrity sha512-5uecJSyl2TwbGM9vJteP4C54zsQL6qllq1qe/JPGO3oqIWcK/PnzCL91E0gfPH5VVpvWGX+6PafNYmU3NK8S7w==
+mongoose@^5.6.8:
+  version "5.6.8"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.8.tgz#9b6d2575c21402def45f50072a3900c54b697cc8"
+  integrity sha512-BhgGU/KvnVX8WbamcWgtG/45rp+xZnaF9MhNbzESIIYxK7g5QurXYcaGGCm/JFiIdIxkVUgBycWG7UzRUEzvDg==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
