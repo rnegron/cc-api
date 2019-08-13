@@ -1186,7 +1186,7 @@ async-limiter@~1.0.0:
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
   integrity sha512-jp/uFnooOiO+L211eZOoSyzpOITMXx1rBITauYykG3BRYPu8h0UcxsPNB04RR5vo4Tyz3+ay17tR6JVf9qzYWg==
 
-async-ratelimiter@~1.2.5:
+async-ratelimiter@~1.2.7:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/async-ratelimiter/-/async-ratelimiter-1.2.7.tgz#ced5b59c846ad3fbebdfa75b7db82ee1a69f6e1d"
   integrity sha512-H1VoOfKn9vd148Lt6j5Gr7b1NQoXk20A3XBdGDB3H34KtFWQmAZQaC4hlVf1OraHvmNJGN+NkCG3AkpkTUJsSg==
@@ -1540,10 +1540,10 @@ cliui@^4.0.0:
     strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
-cluster-key-slot@^1.0.6:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/cluster-key-slot/-/cluster-key-slot-1.0.12.tgz#d5deff2a520717bc98313979b687309b2d368e29"
-  integrity sha512-21O0kGmvED5OJ7ZTdqQ5lQQ+sjuez33R+d35jZKLwqUb5mqcPHUsxOSzj61+LHVtxGZd1kShbQM3MjB/gBJkVg==
+cluster-key-slot@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/cluster-key-slot/-/cluster-key-slot-1.1.0.tgz#30474b2a981fb12172695833052bc0d01336d10d"
+  integrity sha512-2Nii8p3RwAPiFwsnZvukotvow2rIHM+yQ6ZcBXGHdniadkYGZYiGmkHJIbZPIV9nfv7m/U1IPMVVcAhoWFeklw==
 
 co@^4.6.0:
   version "4.6.0"
@@ -2582,15 +2582,15 @@ hapi-api-version@^2.3.1:
     "@hapi/joi" "^15.1.0"
     media-type "^0.3.1"
 
-hapi-rate-limitor@^2.7.1:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/hapi-rate-limitor/-/hapi-rate-limitor-2.8.0.tgz#af170dbe37f81064fcbcac3782f7f69e82866d5b"
-  integrity sha512-JyA98nagSGoDnIxKKqiny3nIdhQQYD+8y20eQlcjeMez71PJA1/mEQDMaYqSw5WQJ5XprSXyWHIcLS4gqwyp+Q==
+hapi-rate-limitor@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/hapi-rate-limitor/-/hapi-rate-limitor-2.9.0.tgz#09c19086c5455b251009d165802e53806d3d4bf9"
+  integrity sha512-8Zh7qwmnIZWK/GQQeXGRdIjPxrunN570T7lQVOJhouW4R1MPha/9SGUqTGNZaQ1KtZSTE8GZiOpDMP1MUTbtVA==
   dependencies:
     "@hapi/boom" "~7.4.2"
-    async-ratelimiter "~1.2.5"
-    ioredis "~4.10.0"
-    lodash "~4.17.11"
+    async-ratelimiter "~1.2.7"
+    ioredis "~4.14.0"
+    lodash "~4.17.15"
     request-ip "~2.1.3"
 
 hapi-sentry@^2.0.2:
@@ -2840,12 +2840,12 @@ invert-kv@^2.0.0:
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
 
-ioredis@~4.10.0:
-  version "4.10.4"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.10.4.tgz#f7ee8f59331e3fa22306114f85323c15f0cebda4"
-  integrity sha512-hGH0ixXRjqTYa/UUiODfjo29phZ57n8WjFTKpsrN3dgsTCkH+WAVuGdbSoH68n+ha2ns6z8d/MRPOU0as0BtIA==
+ioredis@~4.14.0:
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.14.0.tgz#d0e83b1d308ca1ba6e849798bfe91583b560eaac"
+  integrity sha512-vGzyW9QTdGMjaAPUhMj48Z31mIO5qJLzkbsE5dg+orNi7L5Ph035htmkBZNDTDdDk7kp7e9UJUr+alhRuaWp8g==
   dependencies:
-    cluster-key-slot "^1.0.6"
+    cluster-key-slot "^1.1.0"
     debug "^4.1.1"
     denque "^1.1.0"
     lodash.defaults "^4.2.0"
@@ -3719,12 +3719,7 @@ lodash.unescape@4.0.1:
   resolved "https://registry.yarnpkg.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
   integrity sha1-vyJJiGzlFM2hEvrpIYzcBlIR/Jw=
 
-lodash@^4.15.0, lodash@^4.16.3, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@~4.17.11:
-  version "4.17.14"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
-  integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
-
-lodash@^4.17.14, lodash@^4.17.15:
+lodash@^4.15.0, lodash@^4.16.3, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@~4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
