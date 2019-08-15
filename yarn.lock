@@ -248,12 +248,12 @@
   resolved "https://registry.yarnpkg.com/@hapi/file/-/file-1.0.0.tgz#c91c39fd04db8bed5af82d2e032e7a4e65555b38"
   integrity sha512-Bsfp/+1Gyf70eGtnIgmScvrH8sSypO3TcK3Zf0QdHnzn/ACnAkI6KLtGACmNRPEzzIy+W7aJX5E+1fc9GwIABQ==
 
-"@hapi/good-console@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@hapi/good-console/-/good-console-8.1.0.tgz#db15b6f0b00dd265fdda4eed82c20d7598740a5d"
-  integrity sha512-Bdru81gNPQNAFbhO9ZrIBeVats7GUk+wzhkF1ryrodllgcBXGahrvJJJT4Z9Yj3EjcwlhpmuV+Dsjd+2C98edg==
+"@hapi/good-console@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@hapi/good-console/-/good-console-8.1.1.tgz#19882be21ce0ba3be8cb17323fc8d347dd1426a0"
+  integrity sha512-jdebTE3wzCT2Sl3hd3XMct/ZiukdUZk9K9Vt/fgsYPYmws8i+gxxfql8m4IAHOQTvHou61xSfh/697RYzUe63A==
   dependencies:
-    "@hapi/hoek" "6.x.x"
+    "@hapi/hoek" "8.x.x"
     "@hapi/joi" "15.x.x"
     json-stringify-safe "5.x.x"
     moment "2.x.x"
