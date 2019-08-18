@@ -2,7 +2,7 @@ import * as Hapi from '@hapi/hapi';
 import * as Boom from '@hapi/boom';
 import Movie from '../models/movie';
 
-export default async (request: Hapi.Request, _: Hapi.ResponseToolkit) => {
+export default async (request: Hapi.Request) => {
   const movieId = request.params.movieId;
 
   if (!movieId) {
