@@ -14,7 +14,7 @@ export const MovieRunsSchema = new mongoose.Schema({
   language: { type: String, default: 'Spanish' },
   subtitles: { type: String, default: null },
   '3d': { type: Boolean, default: false },
-  'show-times': {
+  showTimes: {
     'Mon-Thu': [Date],
     'Mon-Fri': [Date],
     Friday: [Date],
@@ -25,7 +25,6 @@ export const MovieRunsSchema = new mongoose.Schema({
 
 MovieRunsSchema.plugin(jsonapi, {
   name: 'movie-runs',
-  serializer: { keyForAttribute: 'camelCase' },
 });
 
 const MovieRunsModel = mongoose.model<IMovieRun, IMovieRunModel>(

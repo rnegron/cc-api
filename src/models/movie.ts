@@ -19,8 +19,8 @@ export const MovieSchema = new mongoose.Schema({
   rating: { type: String },
   runtime: { type: Number },
   synopsis: { type: String },
-  'release-date': { type: Date },
-  'now-showing': { type: Boolean },
+  releaseDate: { type: Date },
+  nowShowing: { type: Boolean },
   staring: { type: [ActorSchema] },
 });
 

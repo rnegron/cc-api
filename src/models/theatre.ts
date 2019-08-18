@@ -26,10 +26,10 @@ const TheatreSchema = new mongoose.Schema({
     '4dx': { type: Boolean, default: false },
     atm: { type: Boolean, default: false },
     accessible: { type: Boolean, default: false },
-    'party-room': { type: Boolean, default: false },
-    'game-room': { type: Boolean, default: false },
-    'stadium-theatre': { type: Boolean, default: false },
-    'power-generator': { type: Boolean, default: false },
+    partyRoom: { type: Boolean, default: false },
+    gameRoom: { type: Boolean, default: false },
+    stadiumTheatre: { type: Boolean, default: false },
+    powerGenerator: { type: Boolean, default: false },
   },
   runs: { type: [MovieRunsSchema] },
 });
@@ -47,13 +47,13 @@ TheatreSchema.statics.amenityMap = function(amenityTitle: string) {
     case '4DX':
       return '4dx';
     case 'Game Room':
-      return 'game-room';
+      return 'gameRoom';
     case 'Party Room':
-      return 'party-room';
+      return 'partyRoom';
     case 'Sala Tipo Stadium':
-      return 'stadium-theatre';
+      return 'stadiumTheatre';
     case 'Planta Eléctrica':
-      return 'power-generator';
+      return 'powerGenerator';
     case '':
       return 'accessible';
     default:

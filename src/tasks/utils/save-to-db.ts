@@ -51,7 +51,7 @@ export default async function(
     const movie = new Movie({
       movieId: movieTaskData.movieId,
       ...movieData,
-      'now-showing': flags.nowShowing && !flags.comingSoon,
+      nowShowing: flags.nowShowing && !flags.comingSoon,
     });
 
     try {

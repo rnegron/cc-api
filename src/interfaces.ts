@@ -7,8 +7,8 @@ export interface IMovieDocument extends Document {
   rating: string;
   runtime: number;
   synopsis: string;
-  'release-date': Date;
-  'now-showing': boolean;
+  releaseDate: Date;
+  nowShowing: boolean;
   staring: IActorDocument[];
 }
 export interface ITheatreDocument extends Document {
@@ -23,10 +23,10 @@ export interface ITheatreDocument extends Document {
     '4dx'?: boolean;
     atm?: boolean;
     accessible?: boolean;
-    'party-room'?: boolean;
-    'game-room'?: boolean;
-    'stadium-theatre'?: boolean;
-    'power-generator'?: boolean;
+    partyRoom?: boolean;
+    gameRoom?: boolean;
+    stadiumTheatre?: boolean;
+    powerGenerator?: boolean;
   };
 }
 
@@ -38,7 +38,7 @@ export interface IMovieRunDocument extends Document {
   type: string;
   language: string;
   '3d': boolean;
-  'show-times'?: {
+  showTimes?: {
     'Mon-Thu'?: string[];
     Friday?: string[];
     Saturday?: string[];
