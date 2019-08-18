@@ -24,7 +24,10 @@ export const MovieSchema = new mongoose.Schema({
   staring: { type: [ActorSchema] },
 });
 
-MovieSchema.plugin(jsonapi, { name: 'movie', keyForAttributes: 'camelCase' });
+MovieSchema.plugin(jsonapi, {
+  name: 'movie',
+  serializer: { keyForAttribute: 'camelCase' },
+});
 
 const MovieModel: IMovieModel = mongoose.model<IMovie, IMovieModel>(
   'Movie',

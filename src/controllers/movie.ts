@@ -9,6 +9,7 @@ export default async (request: Hapi.Request) => {
     const movies = await Movie.find({})
       .lean()
       .exec();
+
     return Movie.serialize(movies);
   }
 

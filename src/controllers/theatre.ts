@@ -9,6 +9,7 @@ export default async (request: Hapi.Request) => {
     const theatres = await Theatre.find({})
       .lean()
       .exec();
+
     return Theatre.serialize(theatres);
   }
 
