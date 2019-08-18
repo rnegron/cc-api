@@ -6,13 +6,17 @@ export default async (request: Hapi.Request) => {
   const movieId = request.params.movieId;
 
   if (!movieId) {
-    const movies = await Movie.find({}).exec();
+    const movies = await Movie.find({})
+      .lean()
+      .exec();
     return Movie.serialize(movies);
   }
 
   const movie = await Movie.findOne({
     movieId: movieId,
-  }).exec();
+  })
+    .lean()
+    .exec();
 
   if (!movie) {
     return Boom.notFound();

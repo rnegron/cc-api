@@ -6,13 +6,17 @@ export default async (request: Hapi.Request) => {
   const theatreSlug = request.params.theatreSlug;
 
   if (!theatreSlug) {
-    const theatres = await Theatre.find({}).exec();
+    const theatres = await Theatre.find({})
+      .lean()
+      .exec();
     return Theatre.serialize(theatres);
   }
 
   const theatre = await Theatre.findOne({
     slug: theatreSlug,
-  }).exec();
+  })
+    .lean()
+    .exec();
 
   if (!theatre) {
     return Boom.notFound();
