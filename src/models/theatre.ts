@@ -61,7 +61,10 @@ TheatreSchema.statics.amenityMap = function(amenityTitle: string) {
   }
 };
 
-TheatreSchema.plugin(jsonapi, { name: 'theatre' });
+TheatreSchema.plugin(jsonapi, {
+  name: 'theatre',
+  keyForAttributes: 'camelCase',
+});
 
 const TheatreModel: ITheatreModel = mongoose.model<ITheatre, ITheatreModel>(
   'Theatre',

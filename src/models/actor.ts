@@ -12,7 +12,7 @@ export const ActorSchema = new mongoose.Schema({
   name: { type: String },
 });
 
-ActorSchema.plugin(jsonapi, { name: 'actor' });
+ActorSchema.plugin(jsonapi, { name: 'actor', keyForAttributes: 'camelCase' });
 
 const ActorModel = mongoose.model<IActor, IActorModel>('Actor', ActorSchema);
 

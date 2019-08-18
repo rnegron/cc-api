@@ -23,7 +23,10 @@ export const MovieRunsSchema = new mongoose.Schema({
   },
 });
 
-MovieRunsSchema.plugin(jsonapi, { name: 'movie-runs' });
+MovieRunsSchema.plugin(jsonapi, {
+  name: 'movie-runs',
+  keyForAttributes: 'camelCase',
+});
 
 const MovieRunsModel = mongoose.model<IMovieRun, IMovieRunModel>(
   'movierun',
