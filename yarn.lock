@@ -853,10 +853,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/hapi__vision@^5.5.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@types/hapi__vision/-/hapi__vision-5.5.0.tgz#eb4e0b488b8b2bd1b27edbd4e518cd66aab1ecc7"
-  integrity sha512-qdfI2Xl+N5MdOAna7p/rNkghk4KQI43QjVIfeJBU4zoSIcEBPyxdIoZiDWpQEPodXeLFKox6OVv1RR/g1Lo2wQ==
+"@types/hapi__vision@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@types/hapi__vision/-/hapi__vision-5.5.1.tgz#ad2e84f69457dd86ab65f3cbbe7932c809f0d5ab"
+  integrity sha512-YD/lrMeSIAVBX3vHLIFysxDuTRWUik1ITyG1TCZmUCda3WlBW+Ge07SibcF0m/8iESPjF9M0WwItDLnup9tjDw==
   dependencies:
     "@types/hapi__hapi" "*"
     handlebars "^4.1"
