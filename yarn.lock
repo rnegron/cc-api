@@ -903,10 +903,10 @@
   resolved "https://registry.yarnpkg.com/@types/jsonapi-serializer/-/jsonapi-serializer-3.6.2.tgz#84108b60937e1d399ae8fee7c802980347971e8e"
   integrity sha512-ySsXkAh9UR7Ho8WvB15cav4h8tELXrt0QjVobZ2SyM7K/r/ub6SUjqx0Rx2aljAic7eqalrG4yT3yFGyUPIvIQ==
 
-"@types/lodash@^4.14.136":
-  version "4.14.137"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.137.tgz#8a4804937dc6462274ffcc088df8f14fc1b368e2"
-  integrity sha512-g4rNK5SRKloO+sUGbuO7aPtwbwzMgjK+bm9BBhLD7jGUiGR7zhwYEhSln/ihgYQBeIJ5j7xjyaYzrWTcu3UotQ==
+"@types/lodash@^4.14.138":
+  version "4.14.138"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.138.tgz#34f52640d7358230308344e579c15b378d91989e"
+  integrity sha512-A4uJgHz4hakwNBdHNPdxOTkYmXNgmUAKLbXZ7PKGslgeV0Mb8P3BlbYfPovExek1qnod4pDfRbxuzcVs3dlFLg==
 
 "@types/luxon@^1.15.2":
   version "1.15.2"
