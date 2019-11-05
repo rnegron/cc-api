@@ -14,14 +14,14 @@ const movieRunsDefaults = {
       'hapi-swagger': {},
     },
     validate: {
-      params: {
+      params: Joi.object({
         movieRunId: Joi.string()
           .max(24)
           .regex(/^[0-9a-fA-F]{24}$/)
           .optional()
           .example('54759eb3c090d83494e2d804')
           .description('The movie-run identifier. A MongoDB ObjectID.'),
-      },
+      }),
     },
   },
 };

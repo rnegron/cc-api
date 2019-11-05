@@ -11,14 +11,14 @@ const movieRoute = {
     notes: 'Returns an array or an instance of movie details',
     tags: ['api', 'movie'],
     validate: {
-      params: {
+      params: Joi.object({
         movieId: Joi.string()
           .max(10)
           .regex(/^\d+$/)
           .optional()
           .example('6833')
           .description('The movie identifier. A numeric string.'),
-      },
+      }),
     },
   },
 };

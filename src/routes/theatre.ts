@@ -11,7 +11,7 @@ const theatreDefaults = {
     notes: 'Returns an array or an instance of theatre details',
     tags: ['api', 'theatre'],
     validate: {
-      params: {
+      params: Joi.object({
         theatreSlug: Joi.string()
           .max(128)
           .regex(/[a-z]+(-[a-z])*$/)
@@ -20,7 +20,7 @@ const theatreDefaults = {
           .description(
             'The theatre identifier. Usually a lowercase representation of the theatre name with dashes instead of spaces.'
           ),
-      },
+      }),
     },
   },
 };
