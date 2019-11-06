@@ -53,10 +53,15 @@ export function getReleaseDate(movieDetails: string[]) {
 
 export function getSynopsis(movieDetails: string[]) {
   const synopsisString = movieDetails[DetailPositions.synopsis];
-  return synopsisString
-    .split('SYNOPSIS:')[1]
-    .replace(/\\/g, '')
-    .trim();
+
+  if (synopsisString.includes('SYNOPSIS:')) {
+    return synopsisString
+      .split('SYNOPSIS:')[1]
+      .replace(/\\/g, '')
+      .trim();
+  }
+
+  return null;
 }
 
 function getMovieDetails({
@@ -87,12 +92,12 @@ export default async function({ movieId, movieHtml }: IMovieTaskData) {
     .map((elem) => elem.trim())
     .filter((elem) => elem !== '');
 
-  let movieDetails = getMovieDetails({
+  const movieDetails = getMovieDetails({
     movieHtml,
     movieDetailsArr,
   });
 
-  let movieResults = {
+  const movieResults = {
     id: movieId,
     ...movieDetails,
   };

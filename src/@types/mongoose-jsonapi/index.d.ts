@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 declare module '@carsondarling/mongoose-jsonapi' {
   import * as mongoose from 'mongoose';
 

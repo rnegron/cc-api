@@ -16,11 +16,11 @@ describe('Parse Dates For Movie Runs', () => {
 
     const expectedDates = movieTimeArr.reduce(
       (accum: Date[], movieTimeString) => {
-        let movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
+        const movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
           zone: 'America/Puerto_Rico',
         });
 
-        let mondayDate = mondayThisWeek
+        const mondayDate = mondayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,
@@ -28,7 +28,7 @@ describe('Parse Dates For Movie Runs', () => {
           .toUTC()
           .toJSDate();
 
-        let tuesdayDate = tuesdayThisWeek
+        const tuesdayDate = tuesdayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,
@@ -36,7 +36,7 @@ describe('Parse Dates For Movie Runs', () => {
           .toUTC()
           .toJSDate();
 
-        let wednesdayDate = wednesdayThisWeek
+        const wednesdayDate = wednesdayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,
@@ -44,7 +44,7 @@ describe('Parse Dates For Movie Runs', () => {
           .toUTC()
           .toJSDate();
 
-        let thursdayDate = thursdayThisWeek
+        const thursdayDate = thursdayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,
@@ -78,11 +78,11 @@ describe('Parse Dates For Movie Runs', () => {
 
     const expectedDates = movieTimeArr.reduce(
       (accum: Date[], movieTimeString) => {
-        let movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
+        const movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
           zone: 'America/Puerto_Rico',
         });
 
-        let fridayDate = fridayThisWeek
+        const fridayDate = fridayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,
@@ -110,11 +110,11 @@ describe('Parse Dates For Movie Runs', () => {
 
     const expectedDates = movieTimeArr.reduce(
       (accum: Date[], movieTimeString) => {
-        let movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
+        const movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
           zone: 'America/Puerto_Rico',
         });
 
-        let saturdayDate = saturdayThisWeek
+        const saturdayDate = saturdayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,
@@ -142,11 +142,11 @@ describe('Parse Dates For Movie Runs', () => {
 
     const expectedDates = movieTimeArr.reduce(
       (accum: Date[], movieTimeString) => {
-        let movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
+        const movieTime = DateTime.fromFormat(movieTimeString, 'h:mm a', {
           zone: 'America/Puerto_Rico',
         });
 
-        let sundayDate = sundayThisWeek
+        const sundayDate = sundayThisWeek
           .plus({
             hours: movieTime.hour,
             minutes: movieTime.minute,

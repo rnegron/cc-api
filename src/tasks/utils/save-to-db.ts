@@ -10,7 +10,7 @@ export default async function(
   movies: IMovieTaskData[],
   flags: meow.Result['flags']
 ) {
-  let dbLog = new signale.Signale({ interactive: true, scope: 'db' });
+  const dbLog = new signale.Signale({ interactive: true, scope: 'db' });
 
   dbLog.await('Connecting to DB...');
   await dbConnect();
@@ -18,18 +18,18 @@ export default async function(
 
   signale.info(`Obtained ${movies.length} movies`);
 
-  for (let movieTaskData of movies) {
+  for (const movieTaskData of movies) {
     // https://github.com/klaussinani/signale/issues/44#issuecomment-499476792
     console.log();
 
-    let movieLog = new signale.Signale({
+    const movieLog = new signale.Signale({
       interactive: true,
       scope: `Movie ID: ${movieTaskData.movieId}`,
     });
 
     movieLog.pending(`Checking if movie exists...`);
 
-    let existingMovie = await Movie.findOne({
+    const existingMovie = await Movie.findOne({
       movieId: movieTaskData.movieId,
     }).exec();
 

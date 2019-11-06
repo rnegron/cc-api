@@ -9,11 +9,11 @@ function getDates({
   hours: string[];
   weekDays: DateTime[];
 }): DateTime[] {
-  let results = hours.map((hour) => {
+  const results = hours.map((hour) => {
     return weekDays.map((weekDay) => {
-      let weekDayString = weekDay.toISODate();
+      const weekDayString = weekDay.toISODate();
 
-      let movieTime = DateTime.fromFormat(hour, 'h:mm a', {
+      const movieTime = DateTime.fromFormat(hour, 'h:mm a', {
         zone: 'America/Puerto_Rico',
       });
 
@@ -78,7 +78,7 @@ export function getSundayDays(): DateTime[] {
 export default (dates: IMovieRunDate) => {
   let results: DateTime[] = [];
 
-  for (let [days, hours] of Object.entries(dates)) {
+  for (const [days, hours] of Object.entries(dates)) {
     let weekDays;
 
     if (days === 'MON-THURS') {
@@ -95,7 +95,7 @@ export default (dates: IMovieRunDate) => {
       return [];
     }
 
-    let dateResults = getDates({ hours, weekDays });
+    const dateResults = getDates({ hours, weekDays });
     results = [...results, ...dateResults];
   }
 

@@ -54,7 +54,7 @@ async function getAmenities(html: string) {
     amenitiesArr.map((amenity) => Theatre.amenityMap($(amenity).prop('title')))
   );
 
-  let amenitiesMapping: { [key: string]: boolean } = amenities.reduce(
+  const amenitiesMapping: { [key: string]: boolean } = amenities.reduce(
     (accum: { [key: string]: boolean }, amenity: string) => {
       accum[amenity] = true;
       return accum;
@@ -98,13 +98,13 @@ async function getTheatreData(instance: AxiosInstance, slug: string) {
     },
   });
 
-  let theatreSlugs = await getTheatres(instance);
+  const theatreSlugs = await getTheatres(instance);
 
-  for (let theatreSlug of theatreSlugs) {
+  for (const theatreSlug of theatreSlugs) {
     // https://github.com/klaussinani/signale/issues/44#issuecomment-499476792
     console.log();
 
-    let theatreLog = new signale.Signale({
+    const theatreLog = new signale.Signale({
       interactive: true,
       scope: `Theatre Slug: ${theatreSlug}`,
     });

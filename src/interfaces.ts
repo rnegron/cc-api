@@ -52,6 +52,7 @@ export interface IMovieTaskData {
 }
 
 export interface ISerialize {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (data: Document | Document[]): any;
 }
 

@@ -11,7 +11,7 @@ process.on('uncaughtException', (err: Error) => {
   process.exit(1);
 });
 
-process.on('unhandledRejection', (err: any) => {
+process.on('unhandledRejection', (err) => {
   console.error(`unhandledRejection ${err}`);
   process.exit(1);
 });
