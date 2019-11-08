@@ -2659,10 +2659,10 @@ hapi-sentry@^2.0.2:
     "@hapi/joi" "^15.1.0"
     "@sentry/node" "^5.4.3"
 
-hapi-swagger@^10.0.2:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/hapi-swagger/-/hapi-swagger-10.2.0.tgz#07e6dd6e6a253dc57583f9082132af175b4c52b4"
-  integrity sha512-m50mBiZwGzCJ7T7+V7TYTNB7K9xVkN/683jZiene44+Td5A0f9v1HJQGeV3+MNNJ9uxRj7XhC7QXIQLdFZw9dA==
+hapi-swagger@^10.3.0:
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/hapi-swagger/-/hapi-swagger-10.3.0.tgz#6ed365d8462cb6bc4e6227f748d444ec253824be"
+  integrity sha512-orbco5/gCBfViQElGpoJVnP9wwtEY6zd6o4xgR3rGLfGV6KAr/Q5o0qjvABd20gO5lQCsP5Bo66B+rO/v0xBcA==
   dependencies:
     "@hapi/boom" "^7.1.1"
     "@hapi/hoek" "^6.1.2"
