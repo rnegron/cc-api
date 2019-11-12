@@ -45,7 +45,7 @@
     "@hapi/joi": "^16.1.7",
     "@hapi/scooter": "^5.1.0",
     "@hapi/vision": "^5.5.2",
-    "@types/cheerio": "^0.22.11",
+    "@types/cheerio": "^0.22.14",
     "@types/dotenv": "^8.2.0",
     "@types/hapi__hapi": "^18.2.1",
     "@types/hapi__hoek": "^6.2.0",
