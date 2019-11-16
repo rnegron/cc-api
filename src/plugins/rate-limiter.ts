@@ -11,7 +11,7 @@ function parseRedisUrl(redisUrl: string | null) {
   return {
     host: parsedData.hostname,
     port: parsedData.port,
-    password: get(parsedData, 'auth', ':').split(':')[1],
+    password: (get(parsedData, 'auth') || ':').split(':')[1],
   };
 }
 
