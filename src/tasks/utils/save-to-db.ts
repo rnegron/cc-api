@@ -6,6 +6,32 @@ import Movie from '../../models/movie';
 import getMovieData from '../../helpers/get-movie-data';
 import { IMovieTaskData } from '../../interfaces';
 
+async function checkIfMovieExists(movieId: string, movieLog: signale.Signale) {
+  movieLog.pending(`Checking if movie exists...`);
+
+  const existingMovie = await Movie.findOne({
+    movieId: movieId,
+  }).exec();
+
+  if (existingMovie) {
+    return true;
+  }
+
+  return false;
+}
+
+async function getMoviePayload(
+  movieTaskData: IMovieTaskData,
+  movieLog: signale.Signale
+) {
+  movieLog.pending(`Obtaining data for movie...`);
+  const movieData = await getMovieData(movieTaskData);
+  return {
+    movieId: movieTaskData.movieId,
+    ...movieData,
+  };
+}
+
 /**
  * Saves movie task data generated in task scripts to the database.
  *
@@ -31,28 +57,21 @@ async function saveToDB(movies: IMovieTaskData[], flags: meow.Result['flags']) {
       scope: `Movie ID: ${movieTaskData.movieId}`,
     });
 
-    movieLog.pending(`Checking if movie exists...`);
+    const movieExists = await checkIfMovieExists(
+      movieTaskData.movieId,
+      movieLog
+    );
 
-    const existingMovie = await Movie.findOne({
-      movieId: movieTaskData.movieId,
-    }).exec();
-
-    if (existingMovie) {
+    if (movieExists) {
       movieLog.note(`Movie already exists!`);
       continue;
     }
 
-    movieLog.pending(`Obtaining data for movie...`);
-    const movieData = await getMovieData(movieTaskData);
+    const moviePayload = await getMoviePayload(movieTaskData, movieLog);
 
     try {
-      const movie = new Movie({
-        movieId: movieTaskData.movieId,
-        ...movieData,
-        nowShowing: flags.nowShowing && !flags.comingSoon,
-      });
+      const movie = new Movie(moviePayload);
 
-      movieLog.await(`Data obtained, saving instance...`);
       const movieInstance = await movie.save();
       movieLog.success(`Saved instance (${movieInstance._id})`);
     } catch (err) {
