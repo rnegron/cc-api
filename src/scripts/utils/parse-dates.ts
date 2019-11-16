@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import { flatten } from 'lodash';
+import { flatten, padStart } from 'lodash';
 import { IMovieRunDate } from '../../interfaces';
 
 function getDates({
@@ -11,24 +11,14 @@ function getDates({
 }): DateTime[] {
   const results = hours.map((hour) => {
     return weekDays.map((weekDay) => {
-      const weekDayString = weekDay.toISODate();
-
       const movieTime = DateTime.fromFormat(hour, 'h:mm a', {
         zone: 'America/Puerto_Rico',
       });
 
-      let movieHour = movieTime.hour.toString();
-      let movieMinute = movieTime.minute.toString();
+      const movieHour = padStart(movieTime.hour.toString(), 2, '0');
+      const movieMinute = padStart(movieTime.minute.toString(), 2, '0');
 
-      // Pad hour if necessary
-      if (movieHour.length === 1) {
-        movieHour = `0${movieHour}`;
-      }
-
-      // Pad minute if necessary
-      if (movieMinute.length === 1) {
-        movieMinute = `0${movieMinute}`;
-      }
+      const weekDayString = weekDay.toISODate();
 
       return DateTime.fromISO(
         `${weekDayString}T${movieHour}:${movieMinute}:00`,
