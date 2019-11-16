@@ -21,5 +21,12 @@
     "emitDecoratorMetadata": true
   },
   "include": ["src/**/**.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typedocOptions": {
+        "mode": "file",
+        "out": "docs",
+        "name": "CC-API",
+        "readme": "README.md",
+        "theme": "minimal"
+    }
 }

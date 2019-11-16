@@ -40,7 +40,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] Throttling
     - [X] Versioning
     - [X] JSONAPI Schema Serialization
-    - [ ] Documentation
+    - [X] Documentation
     - [ ] Test Controllers / Use fixtures
     - [ ] Caching
     - [ ] MongoDB Document Hydration / Task Scheduling
@@ -48,8 +48,10 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [ ] Idempotent tasks
     - [ ] Pagination
     - [X] TravisCI Deployment
-- Routes
-    - [X] Movies
-    - [X] Theatres
-    - [X] Movie Runs
+
+- Specific
+    - [ ] Refactor to improve code quality
+    - [ ] Add more tests
+    - [ ] Improve documentation
+
     

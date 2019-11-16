@@ -3,16 +3,18 @@
   "version": "0.0.1",
   "description": "An open-source API for https://caribbeancinemas.com",
   "scripts": {
-    "start": "node dist/index.js",
-    "serve": "ts-node src/",
-    "postinstall": "tsc -p .",
-    "test": "NODE_ENV=test jest -b -i",
-    "lint": "tsc --noEmit && eslint '**/*.ts'",
-    "tasks": "ts-node src/tasks",
     "add-movie-runs": "ts-node ./src/scripts/add-movie-runs",
-    "update-movie-runs": "ts-node ./src/scripts/update-movie-runs",
+    "build": "tsc -p .",
+    "cleanup": "rm -rf dist",
+    "docs": "typedoc",
+    "lint": "tsc --noEmit && eslint '**/*.ts'",
+    "postinstall": "yarn build",
     "scrape-theatres": "ts-node ./src/scripts/scrape-theatres",
-    "cleanup": "rm -rf dist"
+    "serve": "ts-node src/",
+    "start": "node dist/index.js",
+    "tasks": "ts-node src/tasks",
+    "test": "NODE_ENV=test jest -b -i",
+    "update-movie-runs": "ts-node ./src/scripts/update-movie-runs"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,8 @@
     "mongodb-memory-server": "^6.0.1",
     "prettier": "^1.19.1",
     "ts-jest": "^24.0.2",
-    "ts-node": "^8.5.2"
+    "ts-node": "^8.5.2",
+    "typedoc": "^0.15.2"
   },
   "dependencies": {
     "@carsondarling/mongoose-jsonapi": "^1.2.1",
