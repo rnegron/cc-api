@@ -9,24 +9,24 @@ import dbConnect from '../database';
 import Theatre from '../models/theatre';
 // import MovieRun from '../models/movie-run';
 
+/**
+ * Removes whitespace from the start and end of an HTML element
+ * and also removes </br> tags.
+ *
+ * @param elem - The HTML element object to strip.
+ * @returns The `elem` object trimmed and without <br> tags.
+ */
 function stripTags(elem: string) {
-  /**
-   * Removes whitespace from the start and end of an HTML element
-   * and also removes </br> tags.
-   *
-   * @param elem - The HTML element object to strip.
-   * @returns The `elem` object trimmed and without <br> tags.
-   */
   return elem.trim().replace(/<\/?br?>/g, '');
 }
 
+/**
+ * Obtains the subtitle language from a text which may contain it.
+ *
+ * @param subtitleText - The subtitle text portion obtained from parsing a movie run.
+ * @returns The subtitle language (ex: Spanish | English)
+ */
 function getSubtitleLanguage(subtitleText: string) {
-  /**
-   * Obtains the subtitle language from a text which may contain it.
-   *
-   * @param subtitleText - The subtitle text portion obtained from parsing a movie run.
-   * @returns The subtitle language (ex: Spanish | English)
-   */
   const subtitleLanguage = first(subtitleText.trim().split(' ')) || '';
 
   return capitalize(subtitleLanguage.trim());
