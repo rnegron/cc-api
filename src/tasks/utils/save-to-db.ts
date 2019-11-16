@@ -6,10 +6,14 @@ import Movie from '../../models/movie';
 import getMovieData from '../../helpers/get-movie-data';
 import { IMovieTaskData } from '../../interfaces';
 
-export default async function(
-  movies: IMovieTaskData[],
-  flags: meow.Result['flags']
-) {
+/**
+ * Saves movie task data generated in task scripts to the database.
+ *
+ * @param movies - Array of movie task data.
+ * @param flags - Flags passed from the CLI to meow.
+
+ */
+async function saveToDB(movies: IMovieTaskData[], flags: meow.Result['flags']) {
   const dbLog = new signale.Signale({ interactive: true, scope: 'db' });
 
   dbLog.await('Connecting to DB...');
@@ -38,28 +42,24 @@ export default async function(
       continue;
     }
 
-    let movieData;
-    try {
-      movieLog.pending(`Obtaining data for movie...`);
-      movieData = await getMovieData(movieTaskData);
-    } catch (err) {
-      movieLog.fatal(`Failed to obtain movie data, error: ${err.message}`);
-      continue;
-    }
-
-    movieLog.await(`Data obtained, saving instance...`);
-    const movie = new Movie({
-      movieId: movieTaskData.movieId,
-      ...movieData,
-      nowShowing: flags.nowShowing && !flags.comingSoon,
-    });
+    movieLog.pending(`Obtaining data for movie...`);
+    const movieData = await getMovieData(movieTaskData);
 
     try {
+      const movie = new Movie({
+        movieId: movieTaskData.movieId,
+        ...movieData,
+        nowShowing: flags.nowShowing && !flags.comingSoon,
+      });
+
+      movieLog.await(`Data obtained, saving instance...`);
       const movieInstance = await movie.save();
       movieLog.success(`Saved instance (${movieInstance._id})`);
     } catch (err) {
       movieLog.fatal(`Failed to save instance (${movieTaskData.movieId})`);
-      throw new Error(err.message);
+      continue;
     }
   }
 }
+
+export default saveToDB;
