@@ -70,7 +70,10 @@ async function saveToDB(movies: IMovieTaskData[], flags: meow.Result['flags']) {
     const moviePayload = await getMoviePayload(movieTaskData, movieLog);
 
     try {
-      const movie = new Movie(moviePayload);
+      const movie = new Movie({
+        ...moviePayload,
+        nowShowing: flags.nowShowing && !flags.comingSoon,
+      });
 
       const movieInstance = await movie.save();
       movieLog.success(`Saved instance (${movieInstance._id})`);
