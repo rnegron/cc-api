@@ -129,5 +129,4 @@ export default async function run() {
       theatreLog.success(`${theatre.name} saved!`);
     }
   }
-
 }
