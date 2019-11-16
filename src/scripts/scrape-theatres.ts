@@ -87,7 +87,7 @@ async function getTheatreData(instance: AxiosInstance, slug: string) {
   }
 }
 
-(async () => {
+export default async function run() {
   await dbConnect();
 
   const instance = axios.create({
@@ -130,5 +130,4 @@ async function getTheatreData(instance: AxiosInstance, slug: string) {
     }
   }
 
-  process.exit(0);
-})();
+}

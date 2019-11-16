@@ -50,6 +50,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] TravisCI Deployment
 
 - Specific
+    - [ ] Move scripts to tasks and generalize task runner
     - [ ] Refactor to improve code quality
     - [ ] Add more tests
     - [ ] Improve documentation

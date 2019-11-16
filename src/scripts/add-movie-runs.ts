@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { capitalize, chunk, first, includes, last } from 'lodash';
 import * as cheerio from 'cheerio';
 import * as signale from 'signale';
+import * as sanitize from 'sanitize-html';
 
 import parseDates from './utils/parse-dates';
 import { CC_URL, API_GIT_URL } from '../constants';
@@ -20,20 +21,38 @@ function stripTags(elem: string) {
   return elem.trim().replace(/<\/?br?>/g, '');
 }
 
+export function removeImageFromTitle(movieTitle: string) {
+  const clean = sanitize(movieTitle).trim();
+  return clean;
+}
+
 /**
  * Obtains the subtitle language from a text which may contain it.
  *
  * @param subtitleText - The subtitle text portion obtained from parsing a movie run.
  * @returns The subtitle language (ex: Spanish | English)
  */
-function getSubtitleLanguage(subtitleText: string) {
+export function getSubtitleLanguage(subtitleText: string) {
   const subtitleLanguage = first(subtitleText.trim().split(' ')) || '';
 
   return capitalize(subtitleLanguage.trim());
 }
 
+function parseButtonText(buttonText: string) {
+  const excludedWords = ['CXC'];
+  return buttonText
+    .split(' ')
+    .filter((word) => !includes(excludedWords, word))
+    .join(' ')
+    .trim();
+}
+
 function trimFormatButtonText(buttonText: string) {
-  const trimmedText = capitalize(first(buttonText.trim().split('  ')));
+  // Remove certain words like "CXC" from the button text
+  const parsedFormatButtonText = parseButtonText(buttonText);
+
+  const trimmedText = capitalize(first(parsedFormatButtonText.split('  ')));
+
   const language = first(trimmedText.split(' ')) || '';
   let subtitles = null;
 
@@ -50,7 +69,7 @@ function trimFormatButtonText(buttonText: string) {
   return { language, subtitles };
 }
 
-function getMovieTimeData(movieTimeHtml: string) {
+export function getMovieTimeData(movieTimeHtml: string) {
   const movieTimeData = movieTimeHtml
     .trim()
     .split('\n')
@@ -59,7 +78,7 @@ function getMovieTimeData(movieTimeHtml: string) {
   return chunk(movieTimeData, 2);
 }
 
-async function scrapeTheatreMovieRuns(
+export async function scrapeTheatreMovieRuns(
   theatreSlug: string,
   instance: AxiosInstance
 ) {
@@ -78,11 +97,12 @@ async function scrapeTheatreMovieRuns(
 
   for (const movieData of moviesData) {
     // Get the movie title
-
     const movieTitle = $(movieData)
       .find('h5 > b')
       .text()
       .trim();
+
+    const movieTitleParsed = removeImageFromTitle(movieTitle);
 
     const movieFormatButtonText = $(movieData)
       .find('a')
@@ -99,7 +119,7 @@ async function scrapeTheatreMovieRuns(
         .last()
         .html() || '';
 
-    const movieTimes = getMovieTimeData(movieTimeHtml.trim());
+    const movieTimes = getMovieTimeData(movieTimeHtml);
 
     const movieTimeObj: { [date: string]: string[] } = {};
 
@@ -112,16 +132,17 @@ async function scrapeTheatreMovieRuns(
 
     const parsedDates = parseDates(movieTimeObj);
 
+    // Add title, language, subtitles and times
     results = [
       ...results,
-      { title: movieTitle, language, subtitles, times: parsedDates },
+      { title: movieTitleParsed, language, subtitles, times: parsedDates },
     ];
   }
 
   return results;
 }
 
-(async () => {
+export default async function run() {
   await dbConnect();
 
   const instance = axios.create({
@@ -151,4 +172,4 @@ async function scrapeTheatreMovieRuns(
     // If the movie run does not exist, create it
     // If it exists, update it
   }
-})();
+}
