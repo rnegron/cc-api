@@ -2716,15 +2716,14 @@ hapi-api-version@^2.3.1:
     "@hapi/joi" "^15.1.0"
     media-type "^0.3.1"
 
-hapi-rate-limitor@^2.7.1:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/hapi-rate-limitor/-/hapi-rate-limitor-2.11.0.tgz#e67636869c8bc1a269362a030301a2308cd11a31"
-  integrity sha512-+wHJr2CzFWNQGDs1hRrISTtEtREkztdIJSDxycAWqs5FmSn8zrGr56cin10sfeEhjceufuaYsC2bgxD5LBHVnw==
+hapi-rate-limitor@^2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/hapi-rate-limitor/-/hapi-rate-limitor-2.12.0.tgz#631b75110d535e3ef22e9608a8abec49f09c6fc6"
+  integrity sha512-RnDcAmZPKOeVESjQTGnW4gyKP52z3ECsTWf6FGUZgkBBkxYgm0OSm2VEkn9N8UO5Cc6HYkuitFjP4mbbZFPXdg==
   dependencies:
     "@hapi/boom" "~8.0.1"
     async-ratelimiter "~1.2.7"
     ioredis "~4.14.1"
-    lodash "~4.17.15"
     request-ip "~2.1.3"
 
 hapi-sentry@^2.0.2:
@@ -3892,7 +3891,7 @@ lodash.unescape@4.0.1:
   resolved "https://registry.yarnpkg.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
   integrity sha1-vyJJiGzlFM2hEvrpIYzcBlIR/Jw=
 
-lodash@^4.15.0, lodash@^4.16.3, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@~4.17.15:
+lodash@^4.15.0, lodash@^4.16.3, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
