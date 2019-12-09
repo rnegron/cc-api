@@ -74,7 +74,7 @@
     "lodash": "^4.17.15",
     "luxon": "^1.17.2",
     "meow": "^5.0.0",
-    "mongoose": "^5.7.11",
+    "mongoose": "^5.7.14",
     "sanitize-html": "^1.20.1",
     "signale": "^1.4.0",
     "typescript": "^3.6.2"
