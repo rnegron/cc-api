@@ -60,7 +60,7 @@
     "@types/luxon": "^1.21.0",
     "@types/meow": "^5.0.0",
     "@types/mongoose": "^5.5.32",
-    "@types/node": "^12.12.8",
+    "@types/node": "^13.1.0",
     "@types/sanitize-html": "^1.20.2",
     "@types/signale": "^1.2.1",
     "axios": "^0.19.0",
