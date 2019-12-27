@@ -54,7 +54,7 @@ export function getReleaseDate(movieDetails: string[]) {
 export function getSynopsis(movieDetails: string[]) {
   const synopsisString = movieDetails[DetailPositions.synopsis];
 
-  if (synopsisString.includes('SYNOPSIS:')) {
+  if (synopsisString && synopsisString.includes('SYNOPSIS:')) {
     return synopsisString
       .split('SYNOPSIS:')[1]
       .replace(/\\/g, '')
