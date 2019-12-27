@@ -62,3 +62,10 @@ export interface IMovieRunDate {
   SATURDAY?: string[];
   SUNDAY?: string[];
 }
+
+export interface ITaskFlags {
+  nowShowing: boolean;
+  comingSoon: boolean;
+  save: boolean;
+  [name: string]: unknown;
+}
