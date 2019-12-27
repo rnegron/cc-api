@@ -12,7 +12,7 @@
     "scrape-theatres": "ts-node ./src/scripts scrape-theatres",
     "serve": "ts-node src/",
     "start": "node dist/index.js",
-    "tasks": "ts-node src/tasks",
+    "task": "ts-node src/tasks",
     "test": "NODE_ENV=test jest -b -i",
     "update-movie-runs": "ts-node ./src/scripts update-movie-runs"
   },
@@ -23,19 +23,18 @@
   "author": "Raúl Negrón (https://raulnegron.me)",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/mongodb-memory-server": "^2.3.0",
-    "@typescript-eslint/eslint-plugin": "^2.7.0",
-    "@typescript-eslint/parser": "^2.7.0",
-    "eslint": "^6.3.0",
-    "eslint-config-prettier": "^6.2.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "@types/jest": "^24.0.25",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "jest": "^24.8.0",
-    "mongodb-memory-server": "^6.0.1",
+    "mongodb-memory-server": "^6.2.0",
     "prettier": "^1.19.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.5.2",
-    "typedoc": "^0.15.2"
+    "typedoc": "^0.15.6"
   },
   "dependencies": {
     "@carsondarling/mongoose-jsonapi": "^1.2.1",
@@ -58,8 +57,7 @@
     "@types/jsonapi-serializer": "^3.6.1",
     "@types/lodash": "^4.14.148",
     "@types/luxon": "^1.21.0",
-    "@types/meow": "^5.0.0",
-    "@types/mongoose": "^5.5.32",
+    "@types/mongoose": "^5.5.35",
     "@types/node": "^12.12.8",
     "@types/sanitize-html": "^1.20.2",
     "@types/signale": "^1.2.1",
@@ -73,11 +71,11 @@
     "hapi-swagger": "^11.0.0",
     "lodash": "^4.17.15",
     "luxon": "^1.17.2",
-    "meow": "^5.0.0",
-    "mongoose": "^5.7.11",
+    "meow": "^6.0.0",
+    "mongoose": "^5.8.3",
     "sanitize-html": "^1.20.1",
     "signale": "^1.4.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.7.4"
   },
   "engines": {
     "node": ">=10.15"

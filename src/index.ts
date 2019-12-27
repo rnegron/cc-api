@@ -18,7 +18,7 @@ process.on('unhandledRejection', (err) => {
 
 let server;
 
-(async () => {
+async function init() {
   try {
     await dbConnect();
     const server = await getServer();
@@ -28,6 +28,8 @@ let server;
     console.log(err);
     process.exit(1);
   }
-})();
+}
+
+init();
 
 export default server;
