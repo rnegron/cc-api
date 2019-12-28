@@ -2,6 +2,7 @@
 
 [![TypeScript](https://img.shields.io/badge/typescript-%E2%9D%A4%EF%B8%8F-blue.svg)](https://www.typescriptlang.org/)
 [![Build Status](https://travis-ci.org/rnegron/cc-api.svg?branch=master)](https://travis-ci.org/rnegron/cc-api)
+![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m784066929-496b57a0a6b5d5e7bbeb3a91?style=flat-square)
 [![Maintainability](https://api.codeclimate.com/v1/badges/42eab3fd8ea68603786f/maintainability)](https://codeclimate.com/github/rnegron/cc-api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/42eab3fd8ea68603786f/test_coverage)](https://codeclimate.com/github/rnegron/cc-api/test_coverage)
 
@@ -42,8 +43,8 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] JSONAPI Schema Serialization
     - [X] Documentation
     - [ ] Server side caching
-    - [X] MongoDB Document Hydration / Task Scheduling
-    - [X] MongoDB Document Cleanup / Document Expiration
+    - [X] Task Scheduling using Heroku Scheduler
     - [ ] Pagination
     - [ ] 100% Test Coverage
+    - [ ] `A` Maintainability Rating
     - [X] TravisCI Deployment

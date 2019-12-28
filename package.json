@@ -9,6 +9,7 @@
     "docs": "typedoc",
     "format": "eslint --fix '**/*.ts'",
     "lint": "tsc --noEmit && eslint '**/*.ts'",
+    "lint-and-format": "yarn lint && yarn format",
     "postinstall": "yarn build",
     "scrape-theatres": "ts-node ./src/scripts scrape-theatres",
     "serve": "node dist/",
@@ -91,7 +92,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format"
+      "pre-commit": "yarn lint-and-format"
     }
   }
 }
