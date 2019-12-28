@@ -8,6 +8,9 @@ import { IMovieDocument, ISerialize } from '../interfaces';
 export interface IMovie extends IMovieDocument {}
 
 export interface IMovieModel extends mongoose.Model<IMovie> {
+  flagManyAsNowShowing(movieIds: string[]): Promise<IMovie[]>;
+  flagManyAsComingSoon(movieIds: string[]): Promise<IMovie[]>;
+  flagManyAsNoLongerPlaying(movieIds: string[]): Promise<IMovie[]>;
   serialize: ISerialize;
 }
 

@@ -12,14 +12,9 @@ export interface ITheatreModel extends mongoose.Model<ITheatre> {
   serialize: ISerialize;
 }
 
-const TheatreSchema = new mongoose.Schema({
-  __v: { type: Number, select: false },
-  name: { type: String },
-  slug: { type: String, unique: true },
-  city: { type: String },
-  address: { type: String },
-  phone: { type: String },
-  amenities: {
+const AmenitySchema = new mongoose.Schema(
+  {
+    __v: { type: Number, select: false },
     cxc: { type: Boolean, default: false },
     imax: { type: Boolean, default: false },
     '3d': { type: Boolean, default: false },
@@ -31,6 +26,17 @@ const TheatreSchema = new mongoose.Schema({
     stadiumTheatre: { type: Boolean, default: false },
     powerGenerator: { type: Boolean, default: false },
   },
+  { _id: false }
+);
+
+const TheatreSchema = new mongoose.Schema({
+  __v: { type: Number, select: false },
+  name: { type: String },
+  slug: { type: String, unique: true },
+  city: { type: String },
+  address: { type: String },
+  phone: { type: String },
+  amenities: AmenitySchema,
   runs: { type: [MovieRunsSchema] },
 });
 
