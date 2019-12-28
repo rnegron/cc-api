@@ -66,7 +66,7 @@ function trimFormatButtonText(buttonText: string) {
     }
   }
 
-  return { language, subtitles };
+  return { language: language.trim(), subtitles };
 }
 
 export function getMovieTimeData(movieTimeHtml: string) {
