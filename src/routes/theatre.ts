@@ -10,6 +10,10 @@ const theatreDefaults = {
     description: 'Get theatres',
     notes: 'Returns an array or an instance of theatre details',
     tags: ['api', 'theatre'],
+    cache: {
+      expiresIn: 60 * 60 * 1000, // 1 hour
+      privacy: 'private',
+    },
     validate: {
       params: Joi.object({
         theatreSlug: Joi.string()

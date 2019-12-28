@@ -10,6 +10,10 @@ const movieRunsDefaults = {
     description: 'Displays movie details.',
     notes: 'Updated every day at 1AM UTC.',
     tags: ['api', 'movie-runs', 'movies'],
+    cache: {
+      expiresIn: 60 * 60 * 1000, // 1 hour
+      privacy: 'private',
+    },
     plugins: {
       'hapi-swagger': {},
     },

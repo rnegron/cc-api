@@ -10,6 +10,10 @@ const movieRoute = {
     description: 'Get movies',
     notes: 'Returns an array or an instance of movie details',
     tags: ['api', 'movie'],
+    cache: {
+      expiresIn: 60 * 60 * 1000, // 1 hour
+      privacy: 'private',
+    },
     validate: {
       params: Joi.object({
         movieId: Joi.string()

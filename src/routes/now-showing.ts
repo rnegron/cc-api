@@ -8,6 +8,10 @@ const nowShowingDefaults = {
     description: 'Displays the movies that are featured as "now showing".',
     notes: 'Updated every day at 1AM UTC.',
     tags: ['api', 'home', 'now-showing'],
+    cache: {
+      expiresIn: 60 * 60 * 1000, // 1 hour
+      privacy: 'private',
+    },
   },
 };
 

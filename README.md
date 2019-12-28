@@ -41,7 +41,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] Versioning
     - [X] JSONAPI Schema Serialization
     - [X] Documentation
-    - [ ] Caching
+    - [ ] Server side caching
     - [X] MongoDB Document Hydration / Task Scheduling
     - [X] MongoDB Document Cleanup / Document Expiration
     - [ ] Pagination

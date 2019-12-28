@@ -8,6 +8,10 @@ const comingSoonRoute = {
     description: 'Displays the upcoming movies',
     notes: 'Updated every day at 1AM UTC.',
     tags: ['api', 'home', 'coming-soon'],
+    cache: {
+      expiresIn: 60 * 60 * 1000, // 1 hour
+      privacy: 'private',
+    },
   },
 };
 
