@@ -10,10 +10,11 @@
     "lint": "tsc --noEmit && eslint '**/*.ts'",
     "postinstall": "yarn build",
     "scrape-theatres": "ts-node ./src/scripts scrape-theatres",
-    "serve": "ts-node src/",
-    "start": "node dist/index.js",
+    "serve": "node dist/",
+    "start": "yarn run build && yarn run server",
     "task": "ts-node src/tasks",
     "test": "NODE_ENV=test jest -b -i",
+    "ts-serve": "ts-node src/",
     "update-movie-runs": "ts-node ./src/scripts update-movie-runs"
   },
   "repository": {

@@ -18,20 +18,20 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
 
 ### Scrape theatres and update database
 
-`yarn scrape-theatres`
+`yarn tasks get-movie-theatres --persist`
 
 ### Scrape _Now Showing_ Movies and update database
 
-`yarn tasks --now-showing `
+`yarn tasks get-now-showing --persist`
 
 ### Scrape _Coming Soon_ Movies and update database
 
-`yarn tasks --coming-soon`
+`yarn tasks get-coming-soon --persist`
 
 
 ### Add all movie runs for all theatres
 
-`yarn add-movie-runs`
+`yarn tasks get-movie-runs --persist`
 
 ## To-Do
 
