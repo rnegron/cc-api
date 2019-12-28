@@ -1,73 +1,124 @@
-#!/usr/bin/env node
-
-import axios from 'axios';
 import * as meow from 'meow';
+import * as Table from 'cli-table3';
 
-import saveToDB from './utils/save-to-db';
-import nowShowingOrComingSoonTask, { Options } from './scrape-features-movies';
-import { getTitle } from '../helpers/get-movie-data';
+import persistMovies from './utils/persist-movies';
+import getMovieTitle from './utils/get-movie-title';
+import persistTheatres from './utils/persist-theatres';
 
-import { CC_URL, API_GIT_URL } from '../constants';
+import addMovieRuns from '../scripts/add-movie-runs';
+import { getMovieTheatres } from '../scripts/scrape-theatres';
+import { getNotShowing } from '../scripts/movies-not-in-theatres';
+import { getNowShowing, getComingSoon } from '../scripts/scrape-movies';
+
+enum Input {
+  comingSoon = 'get-coming-soon',
+  movieRuns = 'get-movie-runs',
+  notShowing = 'get-not-showing',
+  nowShowing = 'get-now-showing',
+  theatres = 'get-movie-theatres',
+}
 
 const cli = meow(
   `
   Usage
-    $ ts-node src/tasks
+    $ yarn task input [options]
     
+  Input
+    add-movie-runs          
+    get-coming-soon         Scrape movies coming soon
+    get-movie-theatres      Scrape movie theatres
+    get-not-showing         Show movies in database that are no longer in theatres
+    get-now-showing         Scrape movies now showing
+  
   Options
-    --now-showing, --now    Scrape movies now showing
-    --coming-soon, --soon   Scrape movies coming soon
-    --save,                 Store results in MongoDB
+    --persist               Store results in database 
 
   Examples
-    $ ts-node src/tasks --now --save
-`,
-  {
-    flags: {
-      nowShowing: {
-        type: 'boolean',
-        alias: 'now',
-      },
-      comingSoon: {
-        type: 'boolean',
-        alias: 'soon',
-      },
-      save: {
-        type: 'boolean',
-      },
-    },
-  }
+    $ yarn task get-now-showing
+    $ yarn task add-movie-runs --persist
+`
 );
 
-const instance = axios.create({
-  baseURL: CC_URL,
-  headers: { 'X-CC-API': API_GIT_URL },
-});
-
 (async () => {
-  let choice;
+  const persistToDatabase = cli.flags.persist ? true : false;
 
-  if (cli.flags.nowShowing) {
-    choice = Options.nowShowingUrl;
-  } else if (cli.flags.comingSoon) {
-    choice = Options.comingSoonUrl;
-  } else {
-    console.log(cli.help);
-    return;
-  }
+  const input = cli.input[0];
 
-  const results = await nowShowingOrComingSoonTask(instance, choice);
+  if (input === Input.nowShowing) {
+    const results = await getNowShowing();
 
-  if (cli.flags.save) {
-    try {
-      await saveToDB(results, cli.flags);
-      console.log('Data saved!');
-      process.exit(0);
-    } catch (err) {
-      console.log(`Error: ${err}`);
-      process.exit(1);
+    if (persistToDatabase) {
+      await persistMovies(results, { nowShowing: true, comingSoon: false });
+    } else {
+      const table = new Table({
+        head: ['Title'],
+        colWidths: [100, 200],
+      }) as Table.HorizontalTable;
+
+      for (const movieTask of results) {
+        table.push([getMovieTitle(movieTask)]);
+      }
+
+      console.log(table.toString());
+    }
+  } else if (input === Input.comingSoon) {
+    const results = await getComingSoon();
+
+    if (persistToDatabase) {
+      await persistMovies(results, { nowShowing: false, comingSoon: true });
+    } else {
+      const table = new Table({
+        head: ['Title'],
+        colWidths: [100, 200],
+      }) as Table.HorizontalTable;
+
+      for (const movieTask of results) {
+        table.push([getMovieTitle(movieTask)]);
+      }
+
+      console.log(table.toString());
+    }
+  } else if (input === Input.notShowing) {
+    const results = await getNotShowing();
+    if (persistToDatabase) {
+      await persistMovies(results, { nowShowing: false, comingSoon: false });
+    } else {
+      const table = new Table({
+        head: ['Title'],
+        colWidths: [100, 200],
+      }) as Table.HorizontalTable;
+
+      for (const movieTask of results) {
+        table.push([getMovieTitle(movieTask)]);
+      }
+
+      console.log(table.toString());
+    }
+  } else if (input === Input.theatres) {
+    const { slugs, instance } = await getMovieTheatres();
+    if (persistToDatabase) {
+      await persistTheatres(slugs, instance);
+    } else {
+      const table = new Table({
+        head: ['Theatre Name'],
+        colWidths: [100, 200],
+      }) as Table.HorizontalTable;
+
+      for (const slug of slugs) {
+        table.push([slug]);
+      }
+
+      console.log(table.toString());
+    }
+  } else if (input === Input.movieRuns) {
+    if (persistToDatabase) {
+      await addMovieRuns();
+    } else {
+      console.log('Missing --persist flag.');
     }
   } else {
-    console.log(results.map((movie) => getTitle(movie.movieHtml)));
+    console.log(cli.help);
   }
+
+  process.exit(0);
 })();

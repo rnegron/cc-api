@@ -20,9 +20,9 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
 
 `yarn tasks get-movie-theatres --persist`
 
-### Scrape _Now Showing_ Movies and update database
+### Scrape _Now Showing_ Movies
 
-`yarn tasks get-now-showing --persist`
+`yarn tasks get-now-showing`
 
 ### Scrape _Coming Soon_ Movies and update database
 
@@ -31,7 +31,7 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
 
 ### Add all movie runs for all theatres
 
-`yarn tasks get-movie-runs --persist`
+`yarn tasks add-movie-runs --persist`
 
 ## To-Do
 
@@ -48,11 +48,3 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [ ] Idempotent tasks
     - [ ] Pagination
     - [X] TravisCI Deployment
-
-- Specific
-    - [ ] Move scripts to tasks and generalize task runner
-    - [ ] Refactor to improve code quality
-    - [ ] Add more tests
-    - [ ] Improve documentation
-
-    
