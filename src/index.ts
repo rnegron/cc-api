@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 config({ path: resolve(__dirname, '../.env') });
 
-import getServer from './server';
+import serverConnect from './server';
 import dbConnect from './database';
 
 process.on('uncaughtException', (err: Error) => {
@@ -21,7 +21,7 @@ let server;
 async function init() {
   try {
     await dbConnect();
-    const server = await getServer();
+    const server = await serverConnect();
     await server.start();
     server.log(['boot'], `Server running at: ${server.info.uri}`);
   } catch (err) {
@@ -32,4 +32,5 @@ async function init() {
 
 init();
 
+// Return the server singleton
 export default server;

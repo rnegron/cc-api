@@ -225,6 +225,15 @@
     "@hapi/boom" "7.x.x"
     "@hapi/hoek" "8.x.x"
 
+"@hapi/catbox-redis@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@hapi/catbox-redis/-/catbox-redis-5.0.5.tgz#e50390945a164209acda208735c21c67b413ca94"
+  integrity sha512-S1O9yfnuGQYYB6EVXYcmYlXnyN6GJ9jICUvm0nCp5DA3dw0PHbdPN9zmtJzltOnZkhYF5Lzcn+12MA4Ot5N7bw==
+  dependencies:
+    "@hapi/hoek" "8.x.x"
+    "@hapi/joi" "16.x.x"
+    ioredis "4.x.x"
+
 "@hapi/catbox@10.x.x":
   version "10.2.3"
   resolved "https://registry.yarnpkg.com/@hapi/catbox/-/catbox-10.2.3.tgz#2df51ab943d7613df3718fa2bfd981dd9558cec5"
@@ -801,6 +810,14 @@
   resolved "https://registry.yarnpkg.com/@types/hapi__boom/-/hapi__boom-7.4.1.tgz#06439d7637245dcbe6dd6548d2a91f2c1243d80b"
   integrity sha512-x/ZK824GomII7Yoei/nMoB46NQcSfGe0iVpZK3uUivxIAfUUSzRvu8RQO7ZkKapIgzgshHZc+GR+z/BQ8l2VLg==
 
+"@types/hapi__catbox-redis@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/hapi__catbox-redis/-/hapi__catbox-redis-5.0.0.tgz#8f72c8292330107f3d1c582e90f26c35b9c1af5c"
+  integrity sha512-c+GVHtKG36FWydcmyFG5M17TfKqBgQjgWhpdTvdeCVx8frSe8R38DCsj9W8o22hXkNWY1DkTkoeoGKN5Uf1F1A==
+  dependencies:
+    "@types/hapi__catbox" "*"
+    "@types/ioredis" "*"
+
 "@types/hapi__catbox@*":
   version "10.2.2"
   resolved "https://registry.yarnpkg.com/@types/hapi__catbox/-/hapi__catbox-10.2.2.tgz#b13fbdd6006c8793eb80919158593bc2bf8307c4"
@@ -883,6 +900,13 @@
   dependencies:
     "@types/domhandler" "*"
     "@types/domutils" "*"
+    "@types/node" "*"
+
+"@types/ioredis@*":
+  version "4.14.3"
+  resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.14.3.tgz#6a6089296d6fb90bbaee96d36b19d480efff026a"
+  integrity sha512-WM9xJkP+ckvr8DFy2bFEPWEp7454L/4cBT11qhqPqyzdyZ+8DxUfkf/yo+rQGQJbld0agY2PI5Jb3xxC7KZs6g==
+  dependencies:
     "@types/node" "*"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
@@ -3036,7 +3060,7 @@ invariant@^2.2.4:
   dependencies:
     loose-envify "^1.0.0"
 
-ioredis@~4.14.1:
+ioredis@4.x.x, ioredis@~4.14.1:
   version "4.14.1"
   resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.14.1.tgz#b73ded95fcf220f106d33125a92ef6213aa31318"
   integrity sha512-94W+X//GHM+1GJvDk6JPc+8qlM7Dul+9K+lg3/aHixPN7ZGkW6qlvX0DG6At9hWtH2v3B32myfZqWoANUJYGJA==

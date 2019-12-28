@@ -1,4 +1,4 @@
-# cc-api [WIP]
+# cc-api
 
 [![TypeScript](https://img.shields.io/badge/typescript-%E2%9D%A4%EF%B8%8F-blue.svg)](https://www.typescriptlang.org/)
 [![Build Status](https://travis-ci.org/rnegron/cc-api.svg?branch=master)](https://travis-ci.org/rnegron/cc-api)
@@ -41,10 +41,9 @@ A bare-bones homebrew implementation of the Caribbean Cinemas API, being built i
     - [X] Versioning
     - [X] JSONAPI Schema Serialization
     - [X] Documentation
-    - [ ] Test Controllers / Use fixtures
     - [ ] Caching
-    - [ ] MongoDB Document Hydration / Task Scheduling
-    - [ ] MongoDB Document Cleanup / Document Expiration
-    - [ ] Idempotent tasks
+    - [X] MongoDB Document Hydration / Task Scheduling
+    - [X] MongoDB Document Cleanup / Document Expiration
     - [ ] Pagination
+    - [ ] 100% Test Coverage
     - [X] TravisCI Deployment
