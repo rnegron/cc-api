@@ -14,6 +14,22 @@
             "protocol": "inspector"
         },
         {
+            "name": "Debug Jest Tests",
+            "type": "node",
+            "request": "launch",
+            "args": [
+                "--inspect",
+                "${workspaceRoot}/node_modules/.bin/jest",
+                "--runInBand"
+            ],
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**/*.js"
+            ],
+            "smartStep": true,
+            "sourceMaps": true
+        },
+        {
             "name": "Debug Current File",
             "type": "node",
             "request": "launch",
