@@ -2,6 +2,26 @@ import * as Hapi from '@hapi/hapi';
 import * as Boom from '@hapi/boom';
 import Movie from '../models/movie';
 
+export async function comingSoonController(request: Hapi.Request) {
+  const movies = await Movie.find({ comingSoon: true })
+    .lean()
+    .exec();
+
+  request.log(['coming-soon'], `Returning ${movies.length} movies`);
+
+  return Movie.serialize(movies);
+}
+
+export async function nowShowingController(request: Hapi.Request) {
+  const movies = await Movie.find({ nowShowing: true })
+    .lean()
+    .exec();
+
+  request.log(['now-showing'], `Returning ${movies.length} movies`);
+
+  return Movie.serialize(movies);
+}
+
 export default async (request: Hapi.Request) => {
   const movieId = request.params.movieId;
 

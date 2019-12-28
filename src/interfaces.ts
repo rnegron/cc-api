@@ -9,6 +9,7 @@ export interface IMovieDocument extends Document {
   synopsis: string;
   releaseDate: Date;
   nowShowing: boolean;
+  comingSoon: boolean;
   staring: IActorDocument[];
 }
 export interface ITheatreDocument extends Document {

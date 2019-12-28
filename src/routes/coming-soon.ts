@@ -1,9 +1,9 @@
+import { comingSoonController } from '../controllers/movie';
+
 const comingSoonRoute = {
   method: 'GET',
   path: '/coming-soon',
-  handler: function() {
-    return {};
-  },
+  handler: comingSoonController,
   options: {
     description: 'Displays the upcoming movies',
     notes: 'Updated every day at 1AM UTC.',
