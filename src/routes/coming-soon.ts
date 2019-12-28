@@ -1,3 +1,5 @@
+import * as Hapi from '@hapi/hapi';
+
 import { comingSoonController } from '../controllers/movie';
 
 const comingSoonRoute = {
@@ -11,7 +13,8 @@ const comingSoonRoute = {
     cache: {
       expiresIn: 60 * 60 * 1000, // 1 hour
       privacy: 'private',
-    },
+      statuses: [200],
+    } as Hapi.RouteOptionsCache,
   },
 };
 

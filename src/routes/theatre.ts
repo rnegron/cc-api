@@ -1,4 +1,5 @@
 import * as Joi from '@hapi/joi';
+import * as Hapi from '@hapi/hapi';
 
 import theatreController from '../controllers/theatre';
 
@@ -13,7 +14,8 @@ const theatreDefaults = {
     cache: {
       expiresIn: 60 * 60 * 1000, // 1 hour
       privacy: 'private',
-    },
+      statuses: [200],
+    } as Hapi.RouteOptionsCache,
     validate: {
       params: Joi.object({
         theatreSlug: Joi.string()
