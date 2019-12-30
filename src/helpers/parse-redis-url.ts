@@ -11,6 +11,7 @@ export default function parseRedisUrl(redisUrl: string | null) {
   return {
     host: parsedData.hostname,
     port: parsedData.port,
+    user: (get(parsedData, 'auth') || ':').split(':')[0],
     password: (get(parsedData, 'auth') || ':').split(':')[1],
   };
 }
