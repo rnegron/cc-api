@@ -1,3 +1,4 @@
+import { AxiosInstance } from 'axios';
 import { Document } from 'mongoose';
 
 export interface IMovieDocument extends Document {
@@ -50,6 +51,11 @@ export interface IMovieRunDocument extends Document {
 export interface IMovieTaskData {
   movieId: string;
   movieHtml: string;
+}
+
+export interface ITheatreTaskData {
+  slugs: string[];
+  instance: AxiosInstance;
 }
 
 export interface ISerialize {

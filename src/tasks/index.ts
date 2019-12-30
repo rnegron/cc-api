@@ -4,6 +4,8 @@ import persistMovies from './utils/persist-movies';
 import getMovieTitle from './utils/get-movie-title';
 import persistTheatres from './utils/persist-theatres';
 
+import { IMovieTaskData, ITheatreTaskData } from '../interfaces';
+
 import addMovieRuns from '../scripts/add-movie-runs';
 import { getMovieTheatres } from '../scripts/scrape-theatres';
 import { getNotShowing } from '../scripts/movies-not-in-theatres';
@@ -38,50 +40,102 @@ const cli = meow(
 `
 );
 
-(async () => {
-  const persistToDatabase = cli.flags.persist ? true : false;
+async function persist(
+  input: string,
+  results: IMovieTaskData[] | ITheatreTaskData
+) {
+  switch (input) {
+    case Input.nowShowing:
+      await persistMovies(results as IMovieTaskData[], {
+        nowShowing: true,
+        comingSoon: false,
+      });
+      break;
+    case Input.comingSoon:
+      await persistMovies(results as IMovieTaskData[], {
+        nowShowing: false,
+        comingSoon: true,
+      });
+      break;
 
-  const input = cli.input[0];
+    case Input.notShowing:
+      await persistMovies(results as IMovieTaskData[], {
+        nowShowing: false,
+        comingSoon: false,
+      });
+      break;
 
-  if (input === Input.nowShowing) {
-    const results = await getNowShowing();
-
-    if (persistToDatabase) {
-      await persistMovies(results, { nowShowing: true, comingSoon: false });
-    } else {
-      console.log(results.map((movieTask) => getMovieTitle(movieTask)));
-    }
-  } else if (input === Input.comingSoon) {
-    const results = await getComingSoon();
-
-    if (persistToDatabase) {
-      await persistMovies(results, { nowShowing: false, comingSoon: true });
-    } else {
-      console.log(results.map((movieTask) => getMovieTitle(movieTask)));
-    }
-  } else if (input === Input.notShowing) {
-    const results = await getNotShowing();
-    if (persistToDatabase) {
-      await persistMovies(results, { nowShowing: false, comingSoon: false });
-    } else {
-      console.log(results.map((movieTask) => getMovieTitle(movieTask)));
-    }
-  } else if (input === Input.theatres) {
-    const { slugs, instance } = await getMovieTheatres();
-    if (persistToDatabase) {
+    case Input.theatres:
+      const { slugs, instance } = results as ITheatreTaskData;
       await persistTheatres(slugs, instance);
-    } else {
+      break;
+
+    default:
+      break;
+  }
+}
+
+async function log(
+  input: string,
+  results: IMovieTaskData[] | ITheatreTaskData
+) {
+  switch (input) {
+    case Input.nowShowing:
+    case Input.comingSoon:
+    case Input.notShowing:
+      for (const movieTask of results as IMovieTaskData[]) {
+        console.log(getMovieTitle(movieTask));
+      }
+      break;
+
+    case Input.theatres:
+      const { slugs } = results as ITheatreTaskData;
       console.log(slugs);
-    }
-  } else if (input === Input.movieRuns) {
-    if (persistToDatabase) {
-      await addMovieRuns();
-    } else {
-      console.log('Missing --persist flag.');
-    }
-  } else {
-    console.log(cli.help);
+      break;
+
+    default:
+      break;
+  }
+}
+
+async function runTask(input: string, persistToDatabase: boolean) {
+  let results;
+
+  switch (input) {
+    case Input.nowShowing:
+      results = await getNowShowing();
+      break;
+    case Input.comingSoon:
+      results = await getComingSoon();
+      break;
+    case Input.notShowing:
+      results = await getNotShowing();
+      break;
+    case Input.theatres:
+      results = await getMovieTheatres();
+      break;
+
+    case Input.movieRuns:
+      if (persistToDatabase) {
+        await addMovieRuns();
+        process.exit(0);
+      } else {
+        console.log('Missing --persist flag.');
+        process.exit(1);
+      }
+
+    default:
+      console.log(cli.help);
+      process.exit(0);
+  }
+
+  if (persistToDatabase && results) {
+    await persist(input, results);
+  } else if (results) {
+    await log(input, results);
   }
 
   process.exit(0);
-})();
+}
+
+runTask(cli.input[0], cli.flags.persist ? true : false);
