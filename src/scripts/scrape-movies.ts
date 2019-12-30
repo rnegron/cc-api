@@ -1,4 +1,3 @@
-import { zip } from 'lodash';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
@@ -20,32 +19,24 @@ async function scrapeMovies(url: urlOptions): Promise<IMovieTaskData[]> {
   const page = await instance.get(url);
 
   const $ = cheerio.load(page.data);
+
   const movieArr: string[] = $('.column_column > .one-fourth > a')
     .map((_, elem) => $(elem).attr('href'))
     .get();
 
-  const movieIdArr: string[] = [];
-
-  const pageResults = [];
+  const results = [];
 
   for (const moviePath of movieArr) {
     try {
-      const result = await instance.get(moviePath);
-      pageResults.push(result);
-      movieIdArr.push(moviePath.split('movie/')[1].replace('/', ''));
+      const page = await instance.get(moviePath);
+      const movieHtml = cheerio.load(page.data).html() || '';
+      const movieId = moviePath.split('movie/')[1].replace('/', '');
+
+      results.push({ movieId, movieHtml });
     } catch (err) {
       console.error(`Could not get ${moviePath}: ${err.message}`);
     }
   }
-
-  const pageHtmlArr = pageResults.map((page) => {
-    const $ = cheerio.load(page.data);
-    return $.html();
-  });
-
-  const results: IMovieTaskData[] = zip(movieIdArr, pageHtmlArr).map((pair) => {
-    return { movieId: pair[0] || '', movieHtml: pair[1] || '' };
-  });
 
   return results;
 }

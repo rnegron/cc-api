@@ -10,6 +10,13 @@ import dbConnect from '../database';
 import Theatre from '../models/theatre';
 // import MovieRun from '../models/movie-run';
 
+interface IMovieDetail {
+  title: string;
+  language: string;
+  subtitles: string | null;
+  times: Date[];
+}
+
 /**
  * Removes whitespace from the start and end of an HTML element
  * and also removes </br> tags.
@@ -78,6 +85,55 @@ export function getMovieTimeData(movieTimeHtml: string) {
   return chunk(movieTimeData, 2);
 }
 
+function getTitle($: CheerioStatic, movieData: IMovieDetail) {
+  // Get the movie title
+  const movieTitle = $(movieData)
+    .find('h5 > b')
+    .text()
+    .trim();
+
+  const movieTitleParsed = removeImageFromTitle(movieTitle);
+
+  return movieTitleParsed;
+}
+
+function getLanguageAndSubtitles($: CheerioStatic, movieData: IMovieDetail) {
+  const movieFormatButtonText = $(movieData)
+    .find('a')
+    .text()
+    .trim();
+
+  // Get the movie format (language and optional subtitles)
+  const { language, subtitles } = trimFormatButtonText(movieFormatButtonText);
+
+  return { language, subtitles };
+}
+
+function getTimes($: CheerioStatic, movieData: IMovieDetail) {
+  // Get all the movie times
+  const movieTimeHtml =
+    $(movieData)
+      .find('div')
+      .last()
+      .html() || '';
+
+  const movieTimes = getMovieTimeData(movieTimeHtml);
+
+  const movieTimeObj: {
+    [date: string]: string[];
+  } = {};
+
+  // First element is Dates, second element is Times
+  for (const movieTime of movieTimes) {
+    movieTimeObj[movieTime[0]] = movieTime[1]
+      .split(',')
+      .map((time) => time.trim());
+  }
+
+  const parsedDates = parseDates(movieTimeObj);
+  return parsedDates;
+}
+
 export async function scrapeTheatreMovieRuns(
   theatreSlug: string,
   instance: AxiosInstance
@@ -85,59 +141,16 @@ export async function scrapeTheatreMovieRuns(
   const page = await instance.get(`theater/${theatreSlug}`);
   const $ = cheerio.load(page.data);
 
-  let results: {
-    title: string;
-    language: string;
-    subtitles: string | null;
-    times: Date[];
-  }[] = [];
-
   // Get all movie data (title/format/times)
   const moviesData = $('.column_column .three-fourth').get();
 
-  for (const movieData of moviesData) {
-    // Get the movie title
-    const movieTitle = $(movieData)
-      .find('h5 > b')
-      .text()
-      .trim();
-
-    const movieTitleParsed = removeImageFromTitle(movieTitle);
-
-    const movieFormatButtonText = $(movieData)
-      .find('a')
-      .text()
-      .trim();
-
-    // Get the movie format (language and optional subtitles)
-    const { language, subtitles } = trimFormatButtonText(movieFormatButtonText);
-
-    // Get all the movie times
-    const movieTimeHtml =
-      $(movieData)
-        .find('div')
-        .last()
-        .html() || '';
-
-    const movieTimes = getMovieTimeData(movieTimeHtml);
-
-    const movieTimeObj: { [date: string]: string[] } = {};
-
-    // First element is Dates, second element is Times
-    for (const movieTime of movieTimes) {
-      movieTimeObj[movieTime[0]] = movieTime[1]
-        .split(',')
-        .map((time) => time.trim());
-    }
-
-    const parsedDates = parseDates(movieTimeObj);
-
+  const results: IMovieDetail[] = moviesData.map((moviesData) => {
     // Add title, language, subtitles and times
-    results = [
-      ...results,
-      { title: movieTitleParsed, language, subtitles, times: parsedDates },
-    ];
-  }
+    const title = getTitle($, moviesData);
+    const { language, subtitles } = getLanguageAndSubtitles($, moviesData);
+    const times = getTimes($, moviesData);
+    return { title, language, subtitles, times };
+  });
 
   return results;
 }

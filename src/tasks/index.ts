@@ -1,5 +1,4 @@
 import * as meow from 'meow';
-import * as Table from 'cli-table3';
 
 import persistMovies from './utils/persist-movies';
 import getMovieTitle from './utils/get-movie-title';
@@ -12,7 +11,7 @@ import { getNowShowing, getComingSoon } from '../scripts/scrape-movies';
 
 enum Input {
   comingSoon = 'get-coming-soon',
-  movieRuns = 'get-movie-runs',
+  movieRuns = 'add-movie-runs',
   notShowing = 'get-not-showing',
   nowShowing = 'get-now-showing',
   theatres = 'get-movie-theatres',
@@ -50,16 +49,7 @@ const cli = meow(
     if (persistToDatabase) {
       await persistMovies(results, { nowShowing: true, comingSoon: false });
     } else {
-      const table = new Table({
-        head: ['Title'],
-        colWidths: [100, 200],
-      }) as Table.HorizontalTable;
-
-      for (const movieTask of results) {
-        table.push([getMovieTitle(movieTask)]);
-      }
-
-      console.log(table.toString());
+      console.log(results.map((movieTask) => getMovieTitle(movieTask)));
     }
   } else if (input === Input.comingSoon) {
     const results = await getComingSoon();
@@ -67,48 +57,21 @@ const cli = meow(
     if (persistToDatabase) {
       await persistMovies(results, { nowShowing: false, comingSoon: true });
     } else {
-      const table = new Table({
-        head: ['Title'],
-        colWidths: [100, 200],
-      }) as Table.HorizontalTable;
-
-      for (const movieTask of results) {
-        table.push([getMovieTitle(movieTask)]);
-      }
-
-      console.log(table.toString());
+      console.log(results.map((movieTask) => getMovieTitle(movieTask)));
     }
   } else if (input === Input.notShowing) {
     const results = await getNotShowing();
     if (persistToDatabase) {
       await persistMovies(results, { nowShowing: false, comingSoon: false });
     } else {
-      const table = new Table({
-        head: ['Title'],
-        colWidths: [100, 200],
-      }) as Table.HorizontalTable;
-
-      for (const movieTask of results) {
-        table.push([getMovieTitle(movieTask)]);
-      }
-
-      console.log(table.toString());
+      console.log(results.map((movieTask) => getMovieTitle(movieTask)));
     }
   } else if (input === Input.theatres) {
     const { slugs, instance } = await getMovieTheatres();
     if (persistToDatabase) {
       await persistTheatres(slugs, instance);
     } else {
-      const table = new Table({
-        head: ['Theatre Name'],
-        colWidths: [100, 200],
-      }) as Table.HorizontalTable;
-
-      for (const slug of slugs) {
-        table.push([slug]);
-      }
-
-      console.log(table.toString());
+      console.log(slugs);
     }
   } else if (input === Input.movieRuns) {
     if (persistToDatabase) {
