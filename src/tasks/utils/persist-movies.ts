@@ -9,12 +9,12 @@ import Movie, { IMovie } from '../../models/movie';
 
 import getMovieData from '../../helpers/get-movie-data';
 
-interface IQuery {
+interface IStatusQuery {
   nowShowing: boolean;
   comingSoon: boolean;
 }
 
-export default async (movies: IMovieTaskData[], query: IQuery) => {
+export default async (movies: IMovieTaskData[], statusQuery: IStatusQuery) => {
   const dbLog = new signale.Signale({ interactive: true, scope: 'db' });
 
   dbLog.await('Connecting to DB...');
@@ -37,13 +37,13 @@ export default async (movies: IMovieTaskData[], query: IQuery) => {
     const movieExists = await checkIfMovieExists(movieId, movieLog);
 
     if (movieExists) {
-      movieLog.note(`Movie already exists, updating...`);
+      movieLog.note(`Movie already exists, updating status...`);
       // Type assertion, since we checked if the movie exists already
       const movieInstance = (await Movie.findOneAndUpdate(
         { movieId },
-        query
+        statusQuery
       ).exec()) as IMovie;
-      movieLog.success(`Updated movie. (${movieInstance._id})`);
+      movieLog.success(`Updated movie status (${movieInstance._id})`);
       continue;
     }
 
@@ -61,7 +61,7 @@ export default async (movies: IMovieTaskData[], query: IQuery) => {
       // Create and save new movie
       const movieInstance = await Movie.create({
         ...moviePayload,
-        ...query,
+        ...statusQuery,
       });
 
       movieLog.success(`Saved instance (${movieInstance._id})`);

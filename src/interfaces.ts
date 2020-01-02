@@ -5,14 +5,16 @@ export interface IMovieDocument extends Document {
   movieId: string;
   title: string;
   genre: string[];
-  rating: string;
-  runtime: number;
-  synopsis: string;
+  rating: string | null;
+  runtime: number | null;
+  synopsis: string | null;
   releaseDate: Date;
   nowShowing: boolean;
   comingSoon: boolean;
+  poster: string | null;
   staring: IActorDocument[];
 }
+
 export interface ITheatreDocument extends Document {
   name: string;
   slug: string;

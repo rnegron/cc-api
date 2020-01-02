@@ -25,6 +25,7 @@ export const MovieSchema = new mongoose.Schema({
   releaseDate: { type: Date },
   nowShowing: { type: Boolean },
   comingSoon: { type: Boolean },
+  poster: { type: String },
   staring: { type: [ActorSchema] },
 });
 
