@@ -4,3 +4,4 @@ dist
 coverage
 .env
 *.log
+scratchpad.ts
