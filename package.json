@@ -92,7 +92,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-and-format"
+      "pre-push": "yarn lint-and-format"
     }
   }
 }
