@@ -7,7 +7,7 @@ export async function comingSoonController(request: Hapi.Request) {
     .lean()
     .exec();
 
-  request.log(['coming-soon'], `Returning ${movies.length} movies`);
+  request.log(['debug', 'coming-soon'], `Returning ${movies.length} movies`);
 
   return Movie.serialize(movies);
 }
@@ -17,7 +17,7 @@ export async function nowShowingController(request: Hapi.Request) {
     .lean()
     .exec();
 
-  request.log(['now-showing'], `Returning ${movies.length} movies`);
+  request.log(['debug', 'now-showing'], `Returning ${movies.length} movies`);
 
   return Movie.serialize(movies);
 }

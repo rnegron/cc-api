@@ -25,7 +25,7 @@ async function init() {
     await dbConnect();
     const server = await serverConnect();
     await server.start();
-    server.log(['boot'], `Server running at: ${server.info.uri}`);
+    server.log(['info', 'boot'], `Server running at: ${server.info.uri}`);
   } catch (err) {
     console.log(err);
     process.exit(1);
