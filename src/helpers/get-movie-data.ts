@@ -1,7 +1,9 @@
-import * as cheerio from 'cheerio';
 import { DateTime } from 'luxon';
+import * as cheerio from 'cheerio';
+import { AxiosInstance } from 'axios';
 
 import { IMovieTaskData } from '../interfaces';
+import { toBase64 } from '../helpers/image-encoding';
 
 enum DetailPositions {
   genre = 1,
@@ -21,34 +23,34 @@ export function getTitle(movieHtml: string) {
 
 export function getGenres(movieDetails: string[]) {
   const genreString = movieDetails[DetailPositions.genre];
-  return genreString.split('/').map((genre) => genre.trim());
+  if (genreString) {
+    return genreString.split('/').map((genre) => genre.trim());
+  }
+
+  return [];
 }
 
 export function getRating(movieDetails: string[]) {
-  const ratingString = movieDetails[DetailPositions.rating];
-  return ratingString.split(':')[1].trim();
+  const ratingString = movieDetails[DetailPositions.rating] || '';
+  const rating = ratingString.split(':')[1];
+  if (rating) {
+    return rating.trim();
+  }
+
+  return null;
 }
 
 export function getRuntime(movieDetails: string[]) {
-  const runtimeString = movieDetails[DetailPositions.runtime];
-  const runtime = runtimeString
-    .split('TIME:')[1]
-    .trim()
-    .split(':');
+  const runtimeString = movieDetails[DetailPositions.runtime] || '';
+  const time = runtimeString.split('TIME:')[1];
 
-  // Convert H:MM into minutes
-  return Number(runtime[0]) * 60 + Number(runtime[1]);
-}
+  if (time) {
+    const runtime = time.trim().split(':');
+    // Convert H:MM into minutes
+    return Number(runtime[0]) * 60 + Number(runtime[1]);
+  }
 
-export function getReleaseDate(movieDetails: string[]) {
-  const releaseDateString = movieDetails[DetailPositions.releaseDate];
-  const releaseDate = releaseDateString
-    .split(':')[1]
-    .replace(',', '')
-    .trim();
-  return DateTime.fromFormat(releaseDate, 'MMMM d yyyy', {
-    zone: 'America/Puerto_Rico',
-  }).toISO();
+  return null;
 }
 
 export function getSynopsis(movieDetails: string[]) {
@@ -62,6 +64,33 @@ export function getSynopsis(movieDetails: string[]) {
   }
 
   return null;
+}
+
+export function getReleaseDate(movieDetails: string[]) {
+  const releaseDateString = movieDetails[DetailPositions.releaseDate] || '';
+  const releaseDate = releaseDateString
+    .split(':')[1]
+    .replace(',', '')
+    .trim();
+
+  // Convert the release date into PR time in ISO format
+  return DateTime.fromFormat(releaseDate, 'MMMM d yyyy', {
+    zone: 'America/Puerto_Rico',
+  })
+    .toUTC()
+    .toISO();
+}
+
+export async function getPoster(movieId: string, instance: AxiosInstance) {
+  try {
+    const response = await instance.get(`/img/posters/${movieId}.jpg`, {
+      responseType: 'arraybuffer',
+    });
+
+    return toBase64(response.data, 'jpg');
+  } catch (err) {
+    return null;
+  }
 }
 
 function getMovieDetails({
@@ -81,7 +110,10 @@ function getMovieDetails({
   };
 }
 
-export default async function({ movieId, movieHtml }: IMovieTaskData) {
+export default async function(
+  { movieId, movieHtml }: IMovieTaskData,
+  instance: AxiosInstance
+) {
   const $ = cheerio.load(movieHtml);
 
   // Create a string array of extracted data from the movie detail box
@@ -97,9 +129,12 @@ export default async function({ movieId, movieHtml }: IMovieTaskData) {
     movieDetailsArr,
   });
 
+  const moviePoster = await getPoster(movieId, instance);
+
   const movieResults = {
     id: movieId,
     ...movieDetails,
+    poster: moviePoster,
   };
 
   return movieResults;

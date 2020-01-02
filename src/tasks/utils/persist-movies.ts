@@ -1,7 +1,9 @@
+import axios from 'axios';
 import * as signale from 'signale';
 
 import checkIfMovieExists from './check-if-movie-exists';
 
+import { CC_URL } from '../../constants';
 import dbConnect from '../../database';
 import { IMovieTaskData } from '../../interfaces';
 
@@ -22,6 +24,10 @@ export default async (movies: IMovieTaskData[], statusQuery: IStatusQuery) => {
   dbLog.success('DB connection successful.');
 
   signale.info(`Obtained ${movies.length} movies`);
+
+  const axiosInstance = axios.create({
+    baseURL: CC_URL,
+  });
 
   for (const movieTaskData of movies) {
     // https://github.com/klaussinani/signale/issues/44#issuecomment-499476792
@@ -50,7 +56,7 @@ export default async (movies: IMovieTaskData[], statusQuery: IStatusQuery) => {
     let moviePayload;
     try {
       movieLog.pending(`Obtaining data for movie...`);
-      const movieData = await getMovieData(movieTaskData);
+      const movieData = await getMovieData(movieTaskData, axiosInstance);
       moviePayload = { movieId, ...movieData };
     } catch (err) {
       movieLog.fatal(`Could not parse movie data: ${err.message}`);
