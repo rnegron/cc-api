@@ -11,6 +11,21 @@ import { getMovieTheatres } from '../scripts/scrape-theatres';
 import { getNotShowing } from '../scripts/movies-not-in-theatres';
 import { getNowShowing, getComingSoon } from '../scripts/scrape-movies';
 
+const NOW_SHOWING_QUERY = {
+  nowShowing: true,
+  comingSoon: false,
+};
+
+const COMING_SOON_QUERY = {
+  nowShowing: false,
+  comingSoon: true,
+};
+
+const NOT_SHOWING_QUERY = {
+  nowShowing: false,
+  comingSoon: false,
+};
+
 enum Input {
   comingSoon = 'get-coming-soon',
   movieRuns = 'add-movie-runs',
@@ -46,23 +61,15 @@ async function persist(
 ) {
   switch (input) {
     case Input.nowShowing:
-      await persistMovies(results as IMovieTaskData[], {
-        nowShowing: true,
-        comingSoon: false,
-      });
+      await persistMovies(results as IMovieTaskData[], NOW_SHOWING_QUERY);
       break;
+
     case Input.comingSoon:
-      await persistMovies(results as IMovieTaskData[], {
-        nowShowing: false,
-        comingSoon: true,
-      });
+      await persistMovies(results as IMovieTaskData[], COMING_SOON_QUERY);
       break;
 
     case Input.notShowing:
-      await persistMovies(results as IMovieTaskData[], {
-        nowShowing: false,
-        comingSoon: false,
-      });
+      await persistMovies(results as IMovieTaskData[], NOT_SHOWING_QUERY);
       break;
 
     case Input.theatres:

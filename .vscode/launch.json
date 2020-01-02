@@ -5,10 +5,13 @@
             "name": "Debug Server",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/dist/index.js",
+            "program": "${workspaceRoot}/src/index.ts",
             "smartStep": true,
+            "skipFiles": [
+                "<node_internals>/**/*.js"
+            ],
             "outFiles": [
-                "../dist/**/*.js"
+                "${workspaceRoot}/dist/**/*.js"
             ],
             "preLaunchTask": "build",
             "protocol": "inspector"

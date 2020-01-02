@@ -13,10 +13,10 @@
     "postinstall": "yarn build",
     "scrape-theatres": "ts-node ./src/scripts scrape-theatres",
     "serve": "node dist/",
-    "start": "yarn run build && yarn run server",
+    "start": "yarn run build && yarn run serve",
     "tasks": "ts-node src/tasks",
     "test": "NODE_ENV=test jest -b -i",
-    "ts-serve": "ts-node src/",
+    "ts-serve": "NODE_ENV=developmet ts-node src/",
     "update-movie-runs": "ts-node ./src/scripts update-movie-runs"
   },
   "repository": {

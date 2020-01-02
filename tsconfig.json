@@ -5,6 +5,8 @@
     "outDir": "./dist",
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "rootDir": "./src",
+    "sourceMap": true,
+
 
     "strict": true,
     "allowJs": false,
