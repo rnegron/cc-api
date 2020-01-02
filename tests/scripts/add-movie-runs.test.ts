@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { promises as fs } from 'fs';
 
 import axios from 'axios';
@@ -15,7 +16,7 @@ describe('#scrapeTheatreMovieRuns', () => {
     });
 
     const responseText = await fs.readFile(
-      `${__dirname}/../data/theatre-test.html`,
+      path.join(__dirname, '..', 'data', 'theatre-test.html'),
       'utf-8'
     );
 

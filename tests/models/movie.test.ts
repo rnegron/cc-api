@@ -20,7 +20,7 @@ describe('Models: Movie', () => {
 
       await Movie.flagManyAsNowShowing(['movie-a', 'movie-b']);
 
-      const count = await Movie.count({ nowShowing: true }).exec();
+      const count = await Movie.countDocuments({ nowShowing: true }).exec();
       expect(count).toEqual(2);
 
       const moviesNowShowing = await Movie.find({ nowShowing: true })
@@ -53,7 +53,7 @@ describe('Models: Movie', () => {
 
       await Movie.flagManyAsComingSoon(['movie-a', 'movie-b']);
 
-      const count = await Movie.count({ comingSoon: true }).exec();
+      const count = await Movie.countDocuments({ comingSoon: true }).exec();
       expect(count).toEqual(2);
 
       const moviesComingSoon = await Movie.find({ comingSoon: true })
@@ -89,7 +89,7 @@ describe('Models: Movie', () => {
 
       await Movie.flagManyAsNoLongerPlaying(['movie-a', 'movie-b']);
 
-      const count = await Movie.count({
+      const count = await Movie.countDocuments({
         nowShowing: false,
         comingSoon: false,
       }).exec();

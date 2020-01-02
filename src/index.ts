@@ -1,7 +1,9 @@
+import * as path from 'path';
+
 import { resolve } from 'path';
 import { config } from 'dotenv';
 
-config({ path: resolve(__dirname, '../.env') });
+config({ path: resolve(path.join(__dirname, '..', '.env')) });
 
 import serverConnect from './server';
 import dbConnect from './database';
