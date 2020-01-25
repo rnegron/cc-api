@@ -1,4 +1,3 @@
-import https from './https';
 import jsonApiEnforcer from './json-api-enforcer';
 import logger from './logger';
 import rateLimiter from './rate-limiter';
@@ -32,7 +31,6 @@ if (process.env.NODE_ENV === 'production') {
         },
       },
     },
-    https,
     ...plugins,
   ];
 }
