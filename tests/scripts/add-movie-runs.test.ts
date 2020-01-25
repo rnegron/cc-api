@@ -2,7 +2,7 @@ import * as path from 'path';
 import { promises as fs } from 'fs';
 
 import axios from 'axios';
-import * as moxios from 'moxios';
+import MockAdapter from 'axios-mock-adapter';
 
 import {
   scrapeTheatreMovieRuns,
@@ -20,16 +20,15 @@ describe('#scrapeTheatreMovieRuns', () => {
       'utf-8'
     );
 
-    moxios.install(axiosInstance);
+    const mock = new MockAdapter(axiosInstance);
 
-    moxios.stubRequest('https://example.com/theater/theatre-test', {
-      status: 200,
-      responseText,
-    });
+    mock
+      .onGet('https://example.com/theater/theatre-test')
+      .reply(200, responseText);
 
     const result = await scrapeTheatreMovieRuns('theatre-test', axiosInstance);
 
-    moxios.uninstall(axiosInstance);
+    mock.reset();
 
     expect(result).toEqual([
       {

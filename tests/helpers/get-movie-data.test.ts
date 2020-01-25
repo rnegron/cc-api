@@ -2,8 +2,7 @@ import * as path from 'path';
 import { promises as fs } from 'fs';
 
 import axios from 'axios';
-import * as moxios from 'moxios';
-
+import MockAdapter from 'axios-mock-adapter';
 import { CC_URL } from '../../src/constants';
 
 import getMovieData from '../../src/helpers/get-movie-data';
@@ -27,19 +26,16 @@ describe('Get Movie Data', () => {
       baseURL: CC_URL,
     });
 
-    moxios.install(axiosInstance);
+    const mock = new MockAdapter(axiosInstance);
 
-    moxios.stubRequest(`${CC_URL}/img/posters/7284.jpg`, {
-      status: 200,
-      response: moviePoster,
-    });
+    mock.onGet(`${CC_URL}/img/posters/7284.jpg`).reply(200, moviePoster);
 
     const results = await getMovieData(
       { movieId: '7284', movieHtml },
       axiosInstance
     );
 
-    moxios.uninstall(axiosInstance);
+    mock.restore();
 
     expect(results).toEqual({
       genre: ['Animated', 'Adventure', 'Comedy'],
