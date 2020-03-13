@@ -78,6 +78,7 @@
     "luxon": "^1.22.0",
     "meow": "^6.0.1",
     "mongoose": "^5.8.3",
+    "sanitize-html": "^1.22.1",
     "signale": "^1.4.0",
     "typescript": "^3.8.3"
   },

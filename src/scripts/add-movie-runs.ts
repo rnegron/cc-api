@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { capitalize, chunk, first, includes, last } from 'lodash';
 import * as cheerio from 'cheerio';
 import * as signale from 'signale';
+import * as sanitize from 'sanitize-html';
 
 import parseDates from './utils/parse-dates';
 import { CC_URL, API_GIT_URL } from '../constants';
@@ -25,6 +26,10 @@ interface IMovieDetail {
  */
 function stripTags(elem: string) {
   return elem.trim().replace(/<\/?br?>/g, '');
+}
+
+export function removeImageFromTitle(movieTitle: string) {
+  return sanitize(movieTitle).trim();
 }
 
 /**
@@ -86,7 +91,7 @@ function getTitle($: CheerioStatic, movieData: IMovieDetail) {
     .text()
     .trim();
 
-  return movieTitle.trim();
+  return removeImageFromTitle(movieTitle);
 }
 
 function getLanguageAndSubtitles($: CheerioStatic, movieData: IMovieDetail) {
