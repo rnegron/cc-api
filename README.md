@@ -2,7 +2,6 @@
 
 [![TypeScript 90+%](https://img.shields.io/github/languages/top/rnegron/cc-api)](https://www.typescriptlang.org/)
 [![Build Status](https://travis-ci.org/rnegron/cc-api.svg?branch=master)](https://travis-ci.org/rnegron/cc-api)
-![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m784066929-496b57a0a6b5d5e7bbeb3a91?style=flat-square)
 ![Snyk](https://img.shields.io/snyk/vulnerabilities/github/rnegron/cc-api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/42eab3fd8ea68603786f/maintainability)](https://codeclimate.com/github/rnegron/cc-api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/42eab3fd8ea68603786f/test_coverage)](https://codeclimate.com/github/rnegron/cc-api/test_coverage)
