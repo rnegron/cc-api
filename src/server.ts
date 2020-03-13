@@ -9,6 +9,9 @@ export default async () => {
   const serverConfig: Hapi.ServerOptions = {
     port: process.env.PORT || '3000',
     host: 'localhost',
+    routes: {
+      cors: true,
+    },
   };
 
   if (process.env.NODE_ENV === 'production') {
