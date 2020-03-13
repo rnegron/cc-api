@@ -2,7 +2,6 @@ import axios, { AxiosInstance } from 'axios';
 import { capitalize, chunk, first, includes, last } from 'lodash';
 import * as cheerio from 'cheerio';
 import * as signale from 'signale';
-import * as sanitize from 'sanitize-html';
 
 import parseDates from './utils/parse-dates';
 import { CC_URL, API_GIT_URL } from '../constants';
@@ -28,10 +27,6 @@ function stripTags(elem: string) {
   return elem.trim().replace(/<\/?br?>/g, '');
 }
 
-export function removeImageFromTitle(movieTitle: string) {
-  const clean = sanitize(movieTitle).trim();
-  return clean;
-}
 
 /**
  * Obtains the subtitle language from a text which may contain it.
@@ -92,9 +87,7 @@ function getTitle($: CheerioStatic, movieData: IMovieDetail) {
     .text()
     .trim();
 
-  const movieTitleParsed = removeImageFromTitle(movieTitle);
-
-  return movieTitleParsed;
+  return movieTitle.trim()
 }
 
 function getLanguageAndSubtitles($: CheerioStatic, movieData: IMovieDetail) {
