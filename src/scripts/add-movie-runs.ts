@@ -27,7 +27,6 @@ function stripTags(elem: string) {
   return elem.trim().replace(/<\/?br?>/g, '');
 }
 
-
 /**
  * Obtains the subtitle language from a text which may contain it.
  *
@@ -87,7 +86,7 @@ function getTitle($: CheerioStatic, movieData: IMovieDetail) {
     .text()
     .trim();
 
-  return movieTitle.trim()
+  return movieTitle.trim();
 }
 
 function getLanguageAndSubtitles($: CheerioStatic, movieData: IMovieDetail) {
