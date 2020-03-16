@@ -62,7 +62,7 @@
     "@types/luxon": "^1.21.0",
     "@types/mongoose": "^5.5.37",
     "@types/node": "^13.9.0",
-    "@types/signale": "^1.2.1",
+    "@types/signale": "^1.4.0",
     "axios": "0.19.2",
     "blankie": "^4.1.1",
     "cheerio": "^1.0.0-rc.3",
