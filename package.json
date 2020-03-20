@@ -76,7 +76,7 @@
     "hapi-swagger": "^12.1.3",
     "lodash": "^4.17.15",
     "luxon": "^1.22.0",
-    "meow": "^6.0.1",
+    "meow": "^6.1.0",
     "mongoose": "^5.8.3",
     "sanitize-html": "^1.22.1",
     "signale": "^1.4.0",
