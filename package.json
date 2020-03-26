@@ -64,7 +64,7 @@
     "@types/node": "^13.9.0",
     "@types/signale": "^1.2.1",
     "axios": "0.19.2",
-    "blankie": "^4.1.1",
+    "blankie": "^5.0.0",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
     "hapi-api-version": "^2.3.1",

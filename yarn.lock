@@ -484,10 +484,10 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.5.0.tgz#2f9ce301c8898e1c3248b0a8564696b24d1a9a5a"
   integrity sha512-7XYT10CZfPsH7j9F1Jmg1+d0ezOux2oM2GfArAzLwWe4mE2Dr3hVjsAL6+TFY49RRJlCdJDMw3nJsLFroTc8Kw==
 
-"@hapi/hoek@^6.2.1":
-  version "6.2.4"
-  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-6.2.4.tgz#4b95fbaccbfba90185690890bdf1a2fbbda10595"
-  integrity sha512-HOJ20Kc93DkDVvjwHyHawPwPkX44sIrbXazAUDiUXaY2R9JwQGo2PhFfnQtdrsIe4igjG2fPgMra7NYw7qhy0A==
+"@hapi/hoek@^9.0.3":
+  version "9.0.4"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.0.4.tgz#e80ad4e8e8d2adc6c77d985f698447e8628b6010"
+  integrity sha512-EwaJS7RjoXUZ2cXXKZZxZqieGtc7RbvQhUy8FwDoMQtxWVi14tFjeFCYPZAM1mBCpOpiBpyaZbb9NeHc7eGKgw==
 
 "@hapi/inert@^6.0.1":
   version "6.0.1"
@@ -534,7 +534,7 @@
     "@hapi/pinpoint" "^2.0.0"
     "@hapi/topo" "^5.0.0"
 
-"@hapi/joi@^15.0.0", "@hapi/joi@^15.1.0":
+"@hapi/joi@^15.1.0":
   version "15.1.1"
   resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.1.1.tgz#c675b8a71296f02833f8d6d243b34c57b8ce19d7"
   integrity sha512-entf8ZMOK8sc+8YfeOlM8pCfg3b5+WZIKBfUaaJT8UsjAAPjartzxIYm3TIbjvA4u+u++KbcXD38k682nVHDAQ==
@@ -1627,13 +1627,13 @@ bl@^2.2.0:
     readable-stream "^2.3.5"
     safe-buffer "^5.1.1"
 
-blankie@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/blankie/-/blankie-4.1.1.tgz#61b19190c2d224540a48f954c05845d549e13055"
-  integrity sha512-rV8BLrR5T7UkkSf27mPiRWGn8/peJs2FrcGodbXfxsg9R9fuOITih+balI6c7f2HmitR0Fe3MU5C6YpcUYsWwA==
+blankie@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/blankie/-/blankie-5.0.0.tgz#d6446693ad5011962e36f75be031e6e22f445db3"
+  integrity sha512-LVHCsOC7R7uUbHX2WGq+NMGSMzyrGI1BMpMQybBmVJJSue8iWOZ/V2Ju3fqf5hSAhdrv27/ndDUFXMwgTAr9YQ==
   dependencies:
-    "@hapi/hoek" "^6.2.1"
-    "@hapi/joi" "^15.0.0"
+    "@hapi/hoek" "^9.0.3"
+    "@hapi/joi" "^17.1.0"
 
 bluebird@3.5.1:
   version "3.5.1"
