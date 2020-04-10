@@ -6,9 +6,7 @@ export default async (request: Hapi.Request) => {
   const movieRunId = request.params.movieRunId;
 
   if (!movieRunId) {
-    const movieRuns = await MovieRun.find({})
-      .lean()
-      .exec();
+    const movieRuns = await MovieRun.find({}).lean().exec();
 
     return MovieRun.serialize(movieRuns);
   }

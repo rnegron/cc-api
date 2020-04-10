@@ -86,19 +86,13 @@ export function getMovieTimeData(movieTimeHtml: string) {
 
 function getTitle($: CheerioStatic, movieData: IMovieDetail) {
   // Get the movie title
-  const movieTitle = $(movieData)
-    .find('h5 > b')
-    .text()
-    .trim();
+  const movieTitle = $(movieData).find('h5 > b').text().trim();
 
   return removeImageFromTitle(movieTitle);
 }
 
 function getLanguageAndSubtitles($: CheerioStatic, movieData: IMovieDetail) {
-  const movieFormatButtonText = $(movieData)
-    .find('a')
-    .text()
-    .trim();
+  const movieFormatButtonText = $(movieData).find('a').text().trim();
 
   // Get the movie format (language and optional subtitles)
   const { language, subtitles } = trimFormatButtonText(movieFormatButtonText);
@@ -108,11 +102,7 @@ function getLanguageAndSubtitles($: CheerioStatic, movieData: IMovieDetail) {
 
 function getTimes($: CheerioStatic, movieData: IMovieDetail) {
   // Get all the movie times
-  const movieTimeHtml =
-    $(movieData)
-      .find('div')
-      .last()
-      .html() || '';
+  const movieTimeHtml = $(movieData).find('div').last().html() || '';
 
   const movieTimes = getMovieTimeData(movieTimeHtml);
 

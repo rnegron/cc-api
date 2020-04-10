@@ -6,9 +6,7 @@ export default async (request: Hapi.Request) => {
   const theatreSlug = request.params.theatreSlug;
 
   if (!theatreSlug) {
-    const theatres = await Theatre.find({})
-      .lean()
-      .exec();
+    const theatres = await Theatre.find({}).lean().exec();
 
     return Theatre.serialize(theatres);
   }

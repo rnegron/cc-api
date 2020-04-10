@@ -34,21 +34,21 @@ MovieSchema.plugin(jsonapi, {
   serializer: { keyForAttribute: 'camelCase' },
 });
 
-MovieSchema.statics.flagManyAsNowShowing = function(movieIds: string[]) {
+MovieSchema.statics.flagManyAsNowShowing = function (movieIds: string[]) {
   return this.updateMany(
     { movieId: { $in: movieIds } },
     { nowShowing: true, comingSoon: false }
   ).exec();
 };
 
-MovieSchema.statics.flagManyAsComingSoon = function(movieIds: string[]) {
+MovieSchema.statics.flagManyAsComingSoon = function (movieIds: string[]) {
   return this.updateMany(
     { movieId: { $in: movieIds } },
     { nowShowing: false, comingSoon: true }
   ).exec();
 };
 
-MovieSchema.statics.flagManyAsNoLongerPlaying = function(movieIds: string[]) {
+MovieSchema.statics.flagManyAsNoLongerPlaying = function (movieIds: string[]) {
   return this.updateMany(
     { movieId: { $in: movieIds } },
     { nowShowing: false, comingSoon: false }

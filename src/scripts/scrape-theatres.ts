@@ -11,9 +11,7 @@ async function getTheatres(instance: AxiosInstance): Promise<string[]> {
     .find('li.menu-item ')
     .nextAll()
     .map((_, elem) => {
-      const menuItemLink = $(elem)
-        .find('li.menu-item a')
-        .attr('href');
+      const menuItemLink = $(elem).find('li.menu-item a').attr('href');
 
       if (menuItemLink) {
         return menuItemLink.split('theater/')[1];

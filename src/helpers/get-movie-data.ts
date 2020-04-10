@@ -16,9 +16,7 @@ enum DetailPositions {
 export function getTitle(movieHtml: string) {
   const $ = cheerio.load(movieHtml);
 
-  return $('.titles')
-    .text()
-    .replace(/\\/g, '');
+  return $('.titles').text().replace(/\\/g, '');
 }
 
 export function getGenres(movieDetails: string[]) {
@@ -57,10 +55,7 @@ export function getSynopsis(movieDetails: string[]) {
   const synopsisString = movieDetails[DetailPositions.synopsis];
 
   if (synopsisString && synopsisString.includes('SYNOPSIS:')) {
-    return synopsisString
-      .split('SYNOPSIS:')[1]
-      .replace(/\\/g, '')
-      .trim();
+    return synopsisString.split('SYNOPSIS:')[1].replace(/\\/g, '').trim();
   }
 
   return null;
@@ -68,10 +63,7 @@ export function getSynopsis(movieDetails: string[]) {
 
 export function getReleaseDate(movieDetails: string[]) {
   const releaseDateString = movieDetails[DetailPositions.releaseDate] || '';
-  const releaseDate = releaseDateString
-    .split(':')[1]
-    .replace(',', '')
-    .trim();
+  const releaseDate = releaseDateString.split(':')[1].replace(',', '').trim();
 
   // Convert the release date into PR time in ISO format
   return DateTime.fromFormat(releaseDate, 'MMMM d yyyy', {
@@ -110,7 +102,7 @@ function getMovieDetails({
   };
 }
 
-export default async function(
+export default async function (
   { movieId, movieHtml }: IMovieTaskData,
   instance: AxiosInstance
 ) {

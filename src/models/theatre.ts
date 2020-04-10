@@ -40,7 +40,7 @@ const TheatreSchema = new mongoose.Schema({
   runs: { type: [MovieRunsSchema] },
 });
 
-TheatreSchema.statics.amenityMap = function(amenityTitle: string) {
+TheatreSchema.statics.amenityMap = function (amenityTitle: string) {
   switch (amenityTitle) {
     case 'ATM':
       return 'atm';
