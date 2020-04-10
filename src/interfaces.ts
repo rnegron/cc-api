@@ -60,9 +60,10 @@ export interface ITheatreTaskData {
   instance: AxiosInstance;
 }
 
+// TODO: Improve this interface
 export interface ISerialize {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (data: Document | Document[]): any;
+  (data: any): any;
 }
 
 export interface IMovieRunDate {
