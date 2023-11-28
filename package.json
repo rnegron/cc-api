@@ -73,7 +73,7 @@
     "hapi-rate-limitor": "^3.0.0",
     "hapi-require-https": "^5.0.0",
     "hapi-sentry": "^3.0.0",
-    "hapi-swagger": "^14.1.0",
+    "hapi-swagger": "^14.5.4",
     "lodash": "^4.17.21",
     "luxon": "^1.22.0",
     "meow": "9.0.0",
